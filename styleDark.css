@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 :root {
-  --bg: #fff;
+  --bg: #000;
   --fg: #fff;
   --darkAc: #333;
   --lightAc: #828282;
   --bodyContent: #4F4F4F;
   --bodyContentDark: #BDBDBD;
   --subData: #4F4F4F;
-  --subDataDark: #4F4F4F;
+  --subDataDark: rgba(255, 255, 255, 0.4);
 
   --linkBg: #BDBDBD;
   --linkBgDark: #333333;
@@ -59,13 +59,9 @@ input {
   margin-top: 24px;
   width: 85%;
   height: 58px;
-  background-color: var(--linkBg);
-  color: var(--bodyContent);
+  background-color: var(--darkAc);
+  color: #4f4f4f;
   border: none;
-}
-
-#butnLgt{
-  display: none;
 }
 
 input[name="subject"] {
@@ -115,7 +111,7 @@ input[name="subject"]::placeholder {
 }
 
 .dtl-head {
-  color: var(--subData);
+  color: #4f4f4f;
   font-size: 12px;
   margin: 0px;
 }
@@ -124,7 +120,6 @@ input[name="subject"]::placeholder {
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
-  color: var(--darkAc);
 }
 
 .head {
@@ -147,7 +142,7 @@ input[name="subject"]::placeholder {
   width: 100%;
   max-width: 167px;
   height: 194px;
-  border: 1px solid var(--lightAc);
+  border: 1px solid var(--darkAc);
   background-color: var(--bg);
   border-radius: 14px;
   position: relative;
@@ -159,7 +154,7 @@ input[name="subject"]::placeholder {
   height: 104px;
   background-image: url("image.png");
   background-size: cover;
-  border: 1px solid var(--lightAc);
+  border: 1px solid var(--darkAc);
   border-radius: 14px 14px 0 0;
 }
 
@@ -178,7 +173,7 @@ input[name="subject"]::placeholder {
   font-weight: 600;
   font-size: 12px;
   line-height: 18px;
-  color: var(--darkAc);
+  color: var(--fg);
   margin: 0;
 }
 
@@ -226,7 +221,7 @@ input[name="subject"]::placeholder {
 
 .section hr {
   width: 60%;
-  border: 1px solid var(--lightAc);
+  border: 1px solid var(--darkAc);
   margin: 2.5%;
 }
 
@@ -243,7 +238,7 @@ input[name="subject"]::placeholder {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: var(--linkBgDark);
+  color: var(--lightAc);
   margin: 7.5%;
   width: auto;
   margin-bottom: 0px;
@@ -264,14 +259,21 @@ input[name="subject"]::placeholder {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: var(--darkAc);
-  font-weight: 600;
-  background-color: var(--linkBg);
+  color: var(--fg);
+  background-color: var(--linkBgDark);
   padding: 2% 3% 2% 3%;
+  font-weight: 600;
   border-radius: 73px;
   flex-wrap: nowrap;
   white-space: nowrap;
-  margin: 6px;
+  margin:6px;
+}
+iframe{
+  border-radius: 15px;
+}
+
+#butnDrk{
+  display: hidden;
 }
 
 .s-title {
@@ -289,10 +291,6 @@ input[name="subject"]::placeholder {
   flex-direction: column;
   color: var(--lightAc);
   width: auto;
-}
-
-iframe{
-  border-radius: 15px;
 }
 
 .video {
@@ -314,8 +312,8 @@ iframe{
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  background-color: var(--linkBg);
-  color: var(--darkAc);
+  background-color: var(--linkBgDark);
+  color: var(--fg);
   width: 100%;
   margin: 3% 10% 3% 10%;
   border-radius: 12px;
@@ -351,7 +349,7 @@ iframe{
 }
 
 .discription {
-  color: var(--subData);
+  color: var(--subDataDark);
 }
 
 .image-container {
@@ -479,6 +477,7 @@ iframe{
   margin: 3rem;
   padding: 2rem;
   text-align: left;
-  border: 1px solid rgba(190, 255, 108, 0.14);  border-radius: 14px;
-  color: var(--bodyContent);
+  border: 1px solid rgba(190, 255, 108, 0.14);
+  border-radius: 14px;
+  color: var(--bodyContentDark);
 }
