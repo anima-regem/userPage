@@ -1,21 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-:root {
+*,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+:root.light {
   --bg: #fff;
+  --fg: #fff;
+  --darkAc: #333;
+  --lightAc: #828282;
+  --bodyContent: #4f4f4f;
+  --bodyContentDark: #bdbdbd;
+  --subData: #4f4f4f;
+  --subDataDark: #4f4f4f;
+  --linkBg: #bdbdbd;
+  --linkBgDark: #333333;
+  --subText: #333333;
+  --subTextDark: #ffffff;
+}
+:root.dark {
+  --bg: #000;
   --fg: #fff;
   --darkAc: #333;
   --lightAc: #828282;
   --bodyContent: #4F4F4F;
   --bodyContentDark: #BDBDBD;
   --subData: #4F4F4F;
-  --subDataDark: #4F4F4F;
-
+  --subDataDark: rgba(255, 255, 255, 0.4);
   --linkBg: #BDBDBD;
   --linkBgDark: #333333;
-
   --subText: #333333;
   --subTextDark: #FFFFFF;
 }
+
 
 body {
   margin: 0px;
@@ -38,7 +58,6 @@ body {
   margin-top: 20px;
 } */
 
-
 .enq-section {
   display: flex;
   justify-content: center;
@@ -47,7 +66,6 @@ body {
   color: var(--lightAc);
   margin: 12px;
   margin-top: 0px;
-
 }
 
 .enq-icons {
@@ -70,7 +88,7 @@ input {
   border: none;
 }
 
-#butnLgt{
+#butnLgt {
   display: none;
 }
 
@@ -146,7 +164,6 @@ input[name="subject"]::placeholder {
   text-align: center;
   width: 100%;
 }
-
 
 .card {
   box-sizing: border-box;
@@ -297,7 +314,7 @@ input[name="subject"]::placeholder {
   width: auto;
 }
 
-iframe{
+iframe {
   border-radius: 15px;
 }
 
@@ -367,7 +384,8 @@ iframe{
 
 .image-container img[alt="Image"] {
   width: 100%;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(.jpg), #000000;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(.jpg), #000000;
   border: 0.5px solid rgba(43, 175, 164, 0.5);
   border-radius: 0px 0px 24px 24px;
 }
@@ -399,10 +417,10 @@ iframe{
   background-color: #333;
   color: var(--fg);
   text-decoration: none;
-  border: 1px solid #BEFF6C;
+  border: 1px solid #beff6c;
   box-shadow: 1px 8px 31px rgba(0, 0, 0, 0.64);
   backdrop-filter: blur(3.5px);
-  border-radius: 14px
+  border-radius: 14px;
 }
 
 .button-overlay a img {
@@ -418,7 +436,7 @@ iframe{
   text-align: center;
   vertical-align: middle;
   font-size: 12;
-  color: #BEFF6C;
+  color: #beff6c;
 }
 
 .contents p {
@@ -486,6 +504,89 @@ iframe{
   margin: 3rem;
   padding: 2rem;
   text-align: left;
-  border: 1px solid rgba(190, 255, 108, 0.14);  border-radius: 14px;
+  border: 1px solid rgba(190, 255, 108, 0.14);
+  border-radius: 14px;
   color: var(--bodyContent);
 }
+
+.model_container {
+  display: none;
+  opacity: 0;
+  transition: 0.5s;
+}
+.model {
+  width: 90%;
+  height: fit-content;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background-color: #0e0e0e;
+  border-radius: 16px;
+  /* flex: 1; */
+}
+.demo{
+  flex: 1;
+  width: 100%;
+  height: 200px;
+}
+.model > h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #828282;
+}
+.input_section {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  align-items: center;
+  margin: 0;
+  width: 90%;
+  background-color: #333333;
+  border-radius: 16px;
+}
+.input_section > i {
+  color: #beff6c;
+  font-size: 20px;
+}
+
+.input_section > input {
+  margin: 0;
+  width: 90%;
+  background-color: #333333;
+  padding: 0;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #beff6c;
+}
+.input_section > input:focus {
+  outline: none;
+}
+
+.show {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  background-color: none;
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #00000074;
+  opacity: 1;
+}
+/* .model_animation {
+
+} */
