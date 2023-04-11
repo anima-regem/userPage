@@ -87,3 +87,167 @@ const createVcard = () => {
   // Release the object URL after the download has started
   URL.revokeObjectURL(url);
 };
+
+// setup dynamic data from backend
+
+const name = document.getElementById("name");
+const email = document.getElementById("email");
+const phone = document.getElementById("phone");
+const address = document.getElementById("address");
+const website = document.getElementById("website");
+const position = document.getElementById("position");
+const company = document.getElementById("company");
+const bio = document.getElementById("bio");
+
+
+// ----
+
+// Check if social media data is available
+const instagramID = 'www.instagram.com/lorem/';
+const linkedinProfile = '';
+const twitter = 'www.Twitter.com/lorem/';
+const facebook = 'www.facebook.com/lorem/';
+
+// Create an empty HTML string
+let socialMediaHTML = '';
+
+// Check if Facebook is available
+if (facebook !== '') {
+  socialMediaHTML += `
+    <button onclick="toggleModel('Facebook',['${facebook}'])" class="image">
+      <i class="fa-brands fa-facebook-f" style="color: #7c56fe;"></i>
+    </button>
+  `;
+}
+
+// Check if Instagram ID is available
+if (instagramID !== '') {
+  socialMediaHTML += `
+    <button onclick="toggleModel('Instagram ID',['${instagramID}'])" class="image">
+      <i class="fa-brands fa-instagram" style="color: #7c56fe;"></i>
+    </button>
+  `;
+}
+
+// Check if LinkedIn profile is available
+if (linkedinProfile !== '') {
+  socialMediaHTML += `
+    <button onclick="toggleModel('LinkedIn Profile',['${linkedinProfile}'])" class="image">
+      <i class="fa-brands fa-linkedin-in" style="color: #7c56fe;"></i>
+    </button>
+  `;
+}
+
+// Check if Twitter is available
+if (twitter !== '') {
+  socialMediaHTML += `
+    <button onclick="toggleModel('Twitter',['${twitter}'])" class="image">
+      <i class="fa-brands fa-twitter" style="color: #7c56fe;"></i>
+    </button>
+  `;
+}
+
+// If no social media data is available, show a message
+if (socialMediaHTML === '') {
+  socialMediaHTML = '<p>No social media data available.</p>';
+}
+
+// Render the social media section
+const socialMediaSection = document.getElementById('social-media-section');
+socialMediaSection.innerHTML = `
+  <div class="sm-section section">
+    <h3 class="sm-head head">Social Media</h3>
+    <hr />
+    <div class="sm-icons">
+      ${socialMediaHTML}
+    </div>
+  </div>
+`;
+
+
+// ---
+
+const contactsData = [
+  {
+    type: 'Phone Number',
+    value: '9265730149'
+  },
+  {
+    type: 'Email',
+    value: 'example@gmail.com'
+  },
+  {
+    type: 'Address',
+    value: ['123, Elite street, Bangalore.', 'Lorem ipsum', 'xxxxxx']
+  },
+  {
+    type: 'Whatsapp',
+    value: 'example@gmail.com'
+  }
+];
+
+const contactsIconsDiv = document.getElementById('contacts-icons');
+
+contactsData.forEach(data => {
+  if (Array.isArray(data.value)) {
+    if (data.value.length > 0) {
+      const button = createButton(data.type, data.value.join(', '));
+      contactsIconsDiv.appendChild(button);
+    }
+  } else {
+    if (data.value !== '') {
+      const button = createButton(data.type, data.value);
+      contactsIconsDiv.appendChild(button);
+    }
+  }
+});
+
+function createButton(type, value) {
+  const button = document.createElement('button');
+  button.onclick = () => toggleModel(type, [value]);
+  button.classList.add('image');
+  
+  const icon = document.createElement('i');
+  if (type === 'Phone Number') {
+    icon.classList.add('fa-solid', 'fa-phone');
+  } else if (type === 'Email') {
+    icon.classList.add('fa-solid', 'fa-at');
+  } else if (type === 'Address') {
+    icon.classList.add('fa-solid', 'fa-location-dot');
+  } else if (type === 'Whatsapp') {
+    icon.classList.add('fa-brands', 'fa-whatsapp');
+  }
+  icon.style.color = '#7c56fe';
+  
+  button.appendChild(icon);
+  
+  return button;
+}
+
+// ---
+
+// example data, replace with your own
+const linksData = [
+  { name: "Link 1", url: "https://example.com/link1" },
+  { name: "Link 2", url: "https://example.com/link2" },
+  { name: "Link 3", url: "https://example.com/link3" }
+];
+
+// function to generate link card HTML for a single link
+function generateLinkCard(linkData) {
+  return `
+    <div class="link-card">
+      <p class="link">${linkData.name}</p>
+      <button class="image" onclick="window.open('${linkData.url}', '_blank')">
+        <img src="arrow_outward.svg" alt="" class="arrow">
+      </button>
+    </div>
+  `;
+}
+
+// generate link cards based on available data
+const websitesContainer = document.getElementById("websites-container");
+if (linksData.length > 0) {
+  const linkCardsHtml = linksData.map(linkData => generateLinkCard(linkData)).join("");
+  websitesContainer.innerHTML = linkCardsHtml;
+}

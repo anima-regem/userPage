@@ -51,17 +51,17 @@
       <img src="person.jpg" alt="Profile Image">
     </div>
     <div class="glassy-strip">
-      <h2>Name of Person</h2>
+      <h2 id="name">Name of Person</h2>
     </div>
   </div>
   <div class="discription">
-    <p class="disc">Chief Financial Officer</p>
-    <p class="company">Company name</p>
+    <p class="disc" id="position">Chief Financial Officer</p>
+    <p class="company" id="company">Company name</p>
   </div>
   </div>
 
   <div class="main-section section">
-    <p class="details">
+    <p class="details" id="bio">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
       veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -69,65 +69,22 @@
     </p>
   </div>
 
-  <div class="sm-section section">
-    <h3 class="sm-head head">Social Media</h3>
-    <hr />
-    <div class="sm-icons">
-      <button onclick="toggleModel('Instagram ID',['www.instagram.com/lorem/'])" class="image">
-        <i class="fa-brands fa-instagram" style="color: #7c56fe;"></i>
-      </button>
-      <button onclick="toggleModel('Linkedin Profile',['www.LinkedIn.com/lorem/'])" class="image">
-        <i class="fa-brands fa-linkedin-in" style="color: #7c56fe;"></i>
-      </button>
-      <button onclick="toggleModel('Twitter',['www.Twitter.com/lorem/'])" class="image">
-        <i class="fa-brands fa-twitter" style="color: #7c56fe;"></i>
-      </button>
-
-    </div>
-  </div>
+  <div id="social-media-section"></div>
 
   <div class="contacts-section section">
     <h3 class="contacts-head head">Contacts</h3>
     <hr />
-    <div class="contacts-icons">
-      <button onclick="toggleModel('Phone Number',['9265730149'])" class="image">
-        <i class="fa-solid fa-phone" style="color: #7c56fe;"></i>
-      </button>
-      <button onclick="toggleModel('Email',['example@gmail.com'])" class="image">
-        <i class="fa-solid fa-at" style="color: #7c56fe;"></i>
-      </button>
-      <button onclick="toggleModel('Phone Number',['123, Elite street, Bangalore.','Lorem ipsum','xxxxxx'])" class="image">
-        <i class="fa-solid fa-location-dot" style="color: #7c56fe;"></i>
-      </button>
-      <button onclick="toggleModel('Whatsapp',['example@gmail.com'])" class="image">
-        <i class="fa-brands fa-whatsapp" style="color: #7c56fe;"></i>
-      </button>
+    <div class="contacts-icons" id="contacts-icons">
     </div>
   </div>
-
+  
 
   <div class="websites-section section">
     <h3 class="websites-head head">Websites</h3>
     <hr />
-    <div class="websites-icons">
-      <div class="link-card">
-        <p class="link">Link1</p>
-        <button class="image">
-
-          <img src="arrow_outward.svg" alt="" class="arrow">
-        </button>
-
-      </div>
-      <div class="websites-icons">
-        <div class="link-card">
-          <p class="link">Link1</p>
-          <button class="image">
-
-            <img src="arrow_outward.svg" alt="" class="arrow">
-          </button>
-        </div>
-      </div>
-    </div>
+    <div id="websites-container" class="websites-icons"></div>
+  </div>
+  
 
     <div class="services-section section">
       <h3 class="services-head head">Services</h3>

@@ -311,15 +311,27 @@ input[name="subject"]::placeholder {
   align-items: center;
   flex-direction: column;
   color: var(--lightAc);
-  width: auto;
+  width: 85%;
+  height: auto;
+  margin: 6%;
+  min-height:  171px;
+  height: auto;
+}
+
+.video {
+  /* margin: 10%; */
+  width: 100%;
+  height: auto;
+  min-height:  171px;
+  min-width: 350px ;
+  height: auto;
 }
 
 iframe {
   border-radius: 15px;
-}
-
-.video {
-  margin: 10%;
+  width: 100%;
+  min-height:  171px;
+  height: auto;
 }
 
 .websites-icons {
