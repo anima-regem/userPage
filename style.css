@@ -21,6 +21,7 @@ body {
   margin: 0px;
   background-color: var(--bg);
   color: var(--fg);
+  transition: 0.2s;
 }
 
 * {
@@ -32,6 +33,11 @@ body {
   position: relative;
   overflow: hidden;
 }
+
+/* .button-overlay{
+  margin-top: 20px;
+} */
+
 
 .enq-section {
   display: flex;
@@ -374,6 +380,7 @@ iframe{
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  border-radius: inherit;
   /* 50% opacity black */
   z-index: 1;
   /* make sure the overlay is below the div content */
@@ -381,7 +388,7 @@ iframe{
 
 .button-overlay {
   position: absolute;
-  top: 80px;
+  top: 100px;
   right: 30px;
   z-index: 1;
 }
