@@ -248,7 +248,7 @@ input[name="subject"]::placeholder {
   height: 104px;
   background-image: url("image.png");
   background-size: cover;
-  border: 1px solid var(--lightAc);
+  border-bottom: 1px solid var(--lightAc);
   border-radius: 14px 14px 0 0;
 }
 
@@ -437,14 +437,14 @@ iframe {
 .image {
   background-color: #beff6c;
   margin: 5px;
-  width: 49px;
-  height: 49px;
+  width: 57px;
+  height: 58px;
   border-radius: 12px;
   border: none;
 }
 
 .image i {
-  transform: scale(1.5);
+  transform: scale(1.8);
 }
 
 .contacts-icons,
@@ -457,6 +457,7 @@ iframe {
   column-gap: 25px;
   flex-wrap: wrap;
   text-decoration: none;
+
 }
 
 .discription {

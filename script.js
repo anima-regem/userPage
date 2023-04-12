@@ -1,7 +1,7 @@
 const darkBtn = document.getElementById("butnDrk");
 const lightBtn = document.getElementById("butnLgt");
 
-window.addEventListener("load", () => lightMode());
+window.addEventListener("load", () => darkMode());
 
 const darkMode = () => {
   document.documentElement.classList.add("dark");
@@ -21,7 +21,7 @@ const model = document.querySelector("#model");
 
 function toggleModel(name, link) {
   model.innerHTML = "";
-  console.log("length",link.length);
+  console.log("length", link.length);
   const h1 = document.createElement("h1");
   h1.classList.add("model_heading");
   h1.innerHTML = name;
@@ -50,7 +50,7 @@ function inputCard(data) {
   input.classList.add("model_input");
   input.type = "text";
   input.value = data;
-  input.disabled = true;  
+  input.disabled = true;
   input.name = "";
   input.id = "";
 
@@ -66,14 +66,19 @@ function inputCard(data) {
   return div;
 }
 
-const createVcard = () => {
+const personData =  {
+    name: "John Doe",
+    email: "",
+    phone: "1234567890",
+  }
+
+const createVcard = ( ) => {
   const vcardData = [
     "BEGIN:VCARD",
     "VERSION:3.0",
-    "N:Doe;John;;Mr.;",
-    "FN:John Doe",
-    "EMAIL:john.doe@example.com",
-    "TEL;TYPE=CELL:(123) 555-4567",
+    `FN:${personData.name}`,
+    `EMAIL:${personData.email}`,
+    `TEL;TYPE=CELL:${personData.phone}`,
     "END:VCARD",
   ].join("\n");
 
@@ -82,7 +87,7 @@ const createVcard = () => {
 
   const downloadLink = document.createElement("a");
   downloadLink.href = url;
-  downloadLink.download = "contact.vcf";
+  downloadLink.download = `${personData.name}.vcf`;
   downloadLink.click();
 
   // Release the object URL after the download has started
@@ -165,13 +170,17 @@ socialMediaSection.innerHTML = `
 
 // ---
 
-const data = ["123, Elite street, Bangalore.", "Lorem ipsum", "xxxxxx"]
-console.log(data.length)
+const data = ["123, Elite street, Bangalore.", "Lorem ipsum", "xxxxxx"];
+console.log(data.length);
 
 const contactsData = [
   {
     type: "Phone Number",
     value: "9265730149",
+  },
+  {
+    type: "Contact",
+    value: "1234672362",
   },
   {
     type: "Email",
@@ -213,6 +222,9 @@ function createButton(type, value) {
   } else if (type === "Email") {
     icon.classList.add("fa-solid", "fa-at");
     button.onclick = () => window.open(`mailto:${value}`);
+  }else if (type === "Contact") {
+    icon.classList.add("fa-solid", "fa-file");
+    button.onclick = () => createVcard();
   } else if (type === "Address") {
     icon.classList.add("fa-solid", "fa-location-dot");
     button.onclick = () => {
@@ -230,7 +242,6 @@ function createButton(type, value) {
 
   return button;
 }
-
 
 // ---
 
@@ -264,96 +275,95 @@ if (linksData.length > 0) {
 
 // define an array of services
 const services = [
-  { title: 'Service 1' },
-  { title: 'NFC' },
-  { title: 'Service Business' },
-  { title: 'NFC' },
-  { title: 'Service 1' },
-  { title: 'Service 1' },
-  { title: 'Service 1' },
-  { title: 'NFC' },
-  { title: 'Service Business' },
+  { title: "Service 1" },
+  { title: "NFC" },
+  { title: "Service Business" },
+  { title: "NFC" },
+  { title: "Service 1" },
+  { title: "Service 1" },
+  { title: "Service 1" },
+  { title: "NFC" },
+  { title: "Service Business" },
 ];
 
 // get the services-icons container
-const servicesIcons = document.getElementById('services-icons');
+const servicesIcons = document.getElementById("services-icons");
 
 // loop through the services array and dynamically create the service elements
-services.forEach(service => {
-  const serviceElem = document.createElement('div');
-  serviceElem.classList.add('service');
-  const titleElem = document.createElement('p');
-  titleElem.classList.add('s-title');
+services.forEach((service) => {
+  const serviceElem = document.createElement("div");
+  serviceElem.classList.add("service");
+  const titleElem = document.createElement("p");
+  titleElem.classList.add("s-title");
   titleElem.textContent = service.title;
   serviceElem.appendChild(titleElem);
   servicesIcons.appendChild(serviceElem);
 });
 
 // get the video container and iframe element
-const videoContainer = document.querySelector('.embedding .video');
-const videoFrame = videoContainer.querySelector('iframe');
+const videoContainer = document.querySelector(".embedding .video");
+const videoFrame = videoContainer.querySelector("iframe");
 
 // set the YouTube video URL
-const youtubeUrl = 'https://www.youtube.com/embed/N5wpD9Ov_To';
+const youtubeUrl = "https://www.youtube.com/embed/N5wpD9Ov_To";
 
 // set the src attribute of the iframe element
-videoFrame.setAttribute('src', youtubeUrl);
-
+videoFrame.setAttribute("src", youtubeUrl);
 
 // Define an array of products
 const products = [
   {
-    image: 'path/to/image1.jpg',
-    title: 'Smart Business Card',
-    subtitle: 'INR 2000',
-    buttonLabel: 'Frame 101',
+    image: "path/to/image1.jpg",
+    title: "Smart Business Card",
+    subtitle: "INR 2000",
+    buttonLabel: "Frame 101",
   },
   {
-    image: 'path/to/image2.jpg',
-    title: 'Smart Business Card',
-    subtitle: 'INR 2000',
-    buttonLabel: 'Frame 101',
+    image: "path/to/image2.jpg",
+    title: "Smart Business Card",
+    subtitle: "INR 2000",
+    buttonLabel: "Frame 101",
   },
 ];
 
 // Get the products section container
-const productsSection = document.getElementById('products-section');
+const productsSection = document.getElementById("products-section");
 
 // Create the products heading element
-const productsHead = document.createElement('h3');
-productsHead.classList.add('products-head', 'head');
-productsHead.textContent = 'Products';
+const productsHead = document.createElement("h3");
+productsHead.classList.add("products-head", "head");
+productsHead.textContent = "Products";
 
 // Create the products icons container element
-const productsIcons = document.createElement('div');
-productsIcons.classList.add('products-icons');
+const productsIcons = document.createElement("div");
+productsIcons.classList.add("products-icons");
 
 // Loop through the products array and dynamically create the card elements
-products.forEach(product => {
-  const cardElem = document.createElement('div');
-  cardElem.classList.add('card');
+products.forEach((product) => {
+  const cardElem = document.createElement("div");
+  cardElem.classList.add("card");
 
-  const cardImageElem = document.createElement('div');
-  cardImageElem.classList.add('card-image');
+  const cardImageElem = document.createElement("div");
+  cardImageElem.classList.add("card-image");
   cardImageElem.style.backgroundImage = `url(${product.image})`;
   cardElem.appendChild(cardImageElem);
 
-  const cardContentElem = document.createElement('div');
-  cardContentElem.classList.add('card-content');
+  const cardContentElem = document.createElement("div");
+  cardContentElem.classList.add("card-content");
   cardElem.appendChild(cardContentElem);
 
-  const cardTitleElem = document.createElement('h1');
-  cardTitleElem.classList.add('card-title');
+  const cardTitleElem = document.createElement("h1");
+  cardTitleElem.classList.add("card-title");
   cardTitleElem.textContent = product.title;
   cardContentElem.appendChild(cardTitleElem);
 
-  const cardSubtitleElem = document.createElement('p');
-  cardSubtitleElem.classList.add('card-subtitle');
+  const cardSubtitleElem = document.createElement("p");
+  cardSubtitleElem.classList.add("card-subtitle");
   cardSubtitleElem.textContent = product.subtitle;
   cardContentElem.appendChild(cardSubtitleElem);
 
-  const cardButtonElem = document.createElement('button');
-  cardButtonElem.classList.add('card-button');
+  const cardButtonElem = document.createElement("button");
+  cardButtonElem.classList.add("card-button");
   cardButtonElem.textContent = product.buttonLabel;
   cardContentElem.appendChild(cardButtonElem);
 
@@ -362,41 +372,40 @@ products.forEach(product => {
 
 // Add the elements to the products section container
 productsSection.appendChild(productsHead);
-productsSection.appendChild(document.createElement('hr'));
+productsSection.appendChild(document.createElement("hr"));
 productsSection.appendChild(productsIcons);
-
 
 // Define the bank details data as an object
 const bankDetails = {
-  name: 'Jane Doe',
-  accountNumber: '123456789',
-  bankName: 'Bank of America',
-  branch: 'New York',
-  ifscCode: '123456789',
-  swiftCode: 'xxxxxxxxxxx',
-  vatNumber: '123456789'
+  name: "Jane Doe",
+  accountNumber: "123456789",
+  bankName: "Bank of America",
+  branch: "New York",
+  ifscCode: "123456789",
+  swiftCode: "xxxxxxxxxxx",
+  vatNumber: "123456789",
 };
 
 // Get the bank details container element
-const bankDetailsContainer = document.getElementById('bank-details');
+const bankDetailsContainer = document.getElementById("bank-details");
 
 // Create a function to dynamically render the bank details
 function renderBankDetails() {
   // Check if all bank details are empty
-  const isEmpty = Object.values(bankDetails).every(val => val === '');
+  const isEmpty = Object.values(bankDetails).every((val) => val === "");
   if (isEmpty) {
     // If all bank details are empty, don't render anything
-    bankDetailsContainer.innerHTML = '';
+    bankDetailsContainer.innerHTML = "";
     return;
   }
-  
+
   // Otherwise, create the bank details HTML dynamically
-  let bankDetailsHTML = '';
+  let bankDetailsHTML = "";
   bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Name</p><p class="dtl">${bankDetails.name}</p></div><div class="bank-col"></div></div>`;
   bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Account Number</p><p class="dtl">${bankDetails.accountNumber}</p></div><div class="bank-col"><p class="dtl-head">Bank Name</p><p class="dtl">${bankDetails.bankName}</p></div></div>`;
   bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Branch</p><p class="dtl">${bankDetails.branch}</p></div><div class="bank-col"><p class="dtl-head">IFSC Code</p><p class="dtl">${bankDetails.ifscCode}</p></div></div>`;
   bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Swift Code</p><p class="dtl">${bankDetails.swiftCode}</p></div><div class="bank-col"><p class="dtl-head">VAT Number</p><p class="dtl">${bankDetails.vatNumber}</p></div></div>`;
-  
+
   // Set the bank details container HTML to the dynamically generated HTML
   bankDetailsContainer.innerHTML = bankDetailsHTML;
 }
@@ -404,11 +413,11 @@ function renderBankDetails() {
 // Call the renderBankDetails function to render the bank details
 renderBankDetails();
 
-
-
 if (email) {
-  const emailInputs = document.querySelectorAll('.enq-icons input[type="text"]');
-  const submitBtn = document.querySelector('.enq-icons .submit_btn');
+  const emailInputs = document.querySelectorAll(
+    '.enq-icons input[type="text"]'
+  );
+  const submitBtn = document.querySelector(".enq-icons .submit_btn");
   submitBtn.addEventListener("click", () => {
     const name = emailInputs[0].value;
     const email = emailInputs[1].value;
@@ -418,22 +427,22 @@ if (email) {
     window.location.href = mailtoLink;
   });
 } else {
-  const enqSection = document.querySelector('.enq-section');
+  const enqSection = document.querySelector(".enq-section");
   enqSection.style.display = "none";
 }
 
 const awardsData = [
   {
     name: "Award 1",
-    authority: "Authority 1"
+    authority: "Authority 1",
   },
   {
     name: "Award 2",
-    authority: "Authority 2"
+    authority: "Authority 2",
   },
   {
     name: "Award 3",
-    authority: "Authority 3"
+    authority: "Authority 3",
   },
 ];
 
@@ -442,7 +451,9 @@ const awardCardsDiv = document.getElementById("award-cards");
 awardsData.forEach((award) => {
   const card = createAwardCard(award);
   awardCardsDiv.appendChild(card);
-  awardCardsDiv.addEventListener("click",()=> toggleModel('Award', [award.name, award.authority]));
+  awardCardsDiv.addEventListener("click", () =>
+    toggleModel("Award", [award.name, award.authority])
+  );
 });
 
 function createAwardCard(award) {
@@ -460,32 +471,29 @@ function createAwardCard(award) {
   return card;
 }
 
-
 // define an array of services
 const certif = [
-  { title: 'Service 1' },
-  { title: 'NFC' },
-  { title: 'Service Business' },
-  { title: 'NFC' },
-  { title: 'Service 1' },
-  { title: 'Service 1' },
-  { title: 'Service 1' },
-  { title: 'NFC' },
-  { title: 'Service Business' },
+  { title: "Service 1" },
+  { title: "NFC" },
+  { title: "Service Business" },
+  { title: "NFC" },
+  { title: "Service 1" },
+  { title: "Service 1" },
+  { title: "Service 1" },
+  { title: "NFC" },
+  { title: "Service Business" },
 ];
 
 // get the services-icons container
-const certifIcons = document.getElementById('certif-icons');
+const certifIcons = document.getElementById("certif-icons");
 
 // loop through the services array and dynamically create the service elements
-certif.forEach(service => {
-  const serviceElem = document.createElement('div');
-  serviceElem.classList.add('service');
-  const titleElem = document.createElement('p');
-  titleElem.classList.add('s-title');
+certif.forEach((service) => {
+  const serviceElem = document.createElement("div");
+  serviceElem.classList.add("service");
+  const titleElem = document.createElement("p");
+  titleElem.classList.add("s-title");
   titleElem.textContent = service.title;
   serviceElem.appendChild(titleElem);
   certifIcons.appendChild(serviceElem);
 });
-
-
