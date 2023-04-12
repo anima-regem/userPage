@@ -68,7 +68,10 @@ function inputCard(data) {
 
 const personData = {
   name: "John Doe",
-  email: "",
+  email: "SDFJASKDJN#SDKFNDFK",
+  company: "Company Name",
+  position: "Position Name",
+  address: "123 Main St, City, State, 12345",
   phone: "1234567890",
 };
 
@@ -77,7 +80,10 @@ const createVcard = () => {
     "BEGIN:VCARD",
     "VERSION:3.0",
     `FN:${personData.name}`,
-    `EMAIL:${personData.email}`,
+    `EMAIL;TYPE=WORK:${personData.email}`,
+    `ORG:${personData.company}`,
+    `TITLE:${personData.position}`,
+    `ADR;TYPE=WORK:;;${personData.address}`,
     `TEL;TYPE=CELL:${personData.phone}`,
     "END:VCARD",
   ].join("\n");
