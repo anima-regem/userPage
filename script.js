@@ -170,7 +170,7 @@ socialMediaSection.innerHTML = `
 
 // ---
 
-const data = ["123, Elite street, Bangalore.", "Lorem ipsum", "xxxxxx"];
+const data = ["Moolmakuzhy, Thycatuserry PO, Cherthala, Alappuzha.", "Kerala", "688528"];
 console.log(data.length);
 
 const contactsData = [
@@ -188,7 +188,8 @@ const contactsData = [
   },
   {
     type: "Address",
-    value: ["123, Elite street, Bangalore.", "Lorem ipsum", "xxxxxx"],
+    value: ["Moolmakuzhy, Thycatuserry PO, Cherthala, Alappuzha.", "Kerala", "688528"],
+
   },
   {
     type: "Whatsapp",

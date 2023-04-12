@@ -92,7 +92,7 @@ body {
 }
 
 .award_card{
-  border: 2px solid #333333;
+  border: 0.6px solid #333333;
   padding: 3% 8%;
   border-radius: 16px;
   display: flex;
@@ -100,7 +100,7 @@ body {
   justify-content: center;
   align-items: center;
   min-width: 100px;
-  margin-bottom: 5%;
+  margin: 2%;
 }
 .award_card > h3{
   color: var(--bodyContent);
