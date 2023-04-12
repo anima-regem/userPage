@@ -183,7 +183,7 @@ const contactsData = [
   },
   {
     type: "Whatsapp",
-    value: "example@gmail.com",
+    value: "1234672362",
   },
 ];
 
