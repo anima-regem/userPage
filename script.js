@@ -193,6 +193,10 @@ const contactsData = [
   },
 ];
 
+if(contactsData.length === 0) {
+  document.getElementsByClassName("contacts-section")[0].style.display = "none";
+}
+
 const contactsIconsDiv = document.getElementById("contacts-icons");
 
 contactsData.forEach((data) => {
@@ -231,10 +235,14 @@ function createButton(type, value) {
 
 // example data, replace with your own
 const linksData = [
-  { name: "Link 1", url: "https://example.com/link1" },
-  { name: "Link 2", url: "https://example.com/link2" },
-  { name: "Link 3", url: "https://example.com/link3" },
+//   { name: "Link 1", url: "https://example.com/link1" },
+//   { name: "Link 2", url: "https://example.com/link2" },
+//   { name: "Link 3", url: "https://example.com/link3" },
 ];
+
+if (linksData.length==0){
+  document.getElementsByClassName("websites-section")[0].style.display="none";
+}
 
 // function to generate link card HTML for a single link
 function generateLinkCard(linkData) {
@@ -269,6 +277,10 @@ const services = [
   { title: "NFC" },
   { title: "Service Business" },
 ];
+
+if (services.length==0){
+  document.getElementsByClassName("services-section")[0].style.display="none";
+}
 
 // get the services-icons container
 const servicesIcons = document.getElementById("services-icons");
@@ -309,6 +321,10 @@ const products = [
     buttonLabel: "Frame 101",
   },
 ];
+
+if (products.length==0){
+  document.getElementsByClassName("products-section")[0].style.display="none";
+}
 
 // Get the products section container
 const productsSection = document.getElementById("products-section");
@@ -370,6 +386,12 @@ const bankDetails = {
   vatNumber: "123456789",
 };
 
+
+if (Object.values(bankDetails).every((val) => val === "")){
+  document.getElementsByClassName("bank-section")[0].style.display="none";
+}
+
+
 // Get the bank details container element
 const bankDetailsContainer = document.getElementById("bank-details");
 
@@ -430,6 +452,10 @@ const awardsData = [
   },
 ];
 
+if (awardsData.length === 0) {
+  document.getElementsByClassName("awards-section")[0].style.display = "none";
+}
+
 const awardCardsDiv = document.getElementById("award-cards");
 
 awardsData.forEach((award) => {
@@ -456,6 +482,10 @@ function createAwardCard(award) {
 const certif = [
   { title: "Service 1", awardName: "Award 1", awardAuthority: "Authority 1" },
 ];
+
+if (certif.length === 0) {
+  document.getElementsByClassName("certif-section")[0].style.display = "none";
+}
 
 // get the services-icons container
 const certifIcons = document.getElementById("certif-icons");
