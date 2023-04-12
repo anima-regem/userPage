@@ -674,7 +674,7 @@ iframe {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--modelMainerp);
+  background-color: #0000007c;
   opacity: 1;
 }
 /* .model_animation {
