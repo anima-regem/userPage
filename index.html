@@ -1,190 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" id="pagestyle" />
+    <title>Protfolio</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="style.css"  id="pagestyle"/>
-  <title>Protfolio</title>
-</head>
-
-<body>
-  <div class="hero">
-
-    <div class="model_container">
-      <div onclick="hideModel()" class="demo">
+  <body>
+    <div class="hero">
+      <div class="model_container">
+        <div onclick="hideModel()" class="demo"></div>
+        <div class="model" id="model"></div>
+        <div onclick="hideModel()" class="demo"></div>
       </div>
-      <div class="model" id="model">
 
-      </div>
-      <div onclick="hideModel()" class="demo">
-
-      </div>
-    </div>
-
-    <div class="image-container">
-      <img src="image.jpg" alt="Image">
-      <div onclick="darkMode()" class="button-overlay" id="butnDrk">
-        <a href="#">
-          <div class="contents">
-            <i class="fa-solid fa-moon" ></i>
-            <p id="mode">dark mode</p>
-          </div>
-        </a>
-      </div>
-      
-      <div onclick="lightMode()" class="button-overlay" id="butnLgt">
-      <a href="#">
-        <div class="contents">
-          <img src="light_mode.svg" alt="">
-          <p id="mode">light mode</p>
+      <div class="image-container">
+        <img src="image.jpg" alt="Image" />
+        <div onclick="darkMode()" class="button-overlay" id="butnDrk">
+          <a href="#">
+            <div class="contents">
+              <i class="fa-solid fa-moon"></i>
+              <p id="mode">dark mode</p>
+            </div>
+          </a>
         </div>
-      </a>
-    </div>
-    <div class="profile-image-overlay">
-      <img src="person.jpg" alt="Profile Image">
-    </div>
-    <div class="glassy-strip">
-      <h2 id="name">Name of Person</h2>
-    </div>
-  </div>
-  <div class="discription">
-    <p class="disc" id="position">Chief Financial Officer</p>
-    <p class="company" id="company">Company name</p>
-  </div>
-  </div>
 
-  <div class="main-section section">
-    <p class="details" id="bio">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-    </p>
-  </div>
-
-  <div id="social-media-section"></div>
-
-  <div class="contacts-section section">
-    <h3 class="contacts-head head">Contacts</h3>
-    <hr />
-    <div class="contacts-icons" id="contacts-icons">
+        <div onclick="lightMode()" class="button-overlay" id="butnLgt">
+          <a href="#">
+            <div class="contents">
+              <img src="light_mode.svg" alt="" />
+              <p id="mode">light mode</p>
+            </div>
+          </a>
+        </div>
+        <div class="profile-image-overlay">
+          <img src="person.jpg" alt="Profile Image" />
+        </div>
+        <div class="glassy-strip">
+          <h2 id="name">Name of Person</h2>
+        </div>
+      </div>
+      <div class="discription">
+        <p class="disc" id="position">Chief Financial Officer</p>
+        <p class="company" id="company">Company name</p>
+      </div>
     </div>
-  </div>
-  
 
-  <div class="websites-section section">
-    <h3 class="websites-head head">Websites</h3>
-    <hr />
-    <div id="websites-container" class="websites-icons"></div>
-  </div>
-  
+    <div class="main-section section">
+      <p class="details" id="bio">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+    </div>
+
+    <div id="social-media-section"></div>
+
+    <div class="contacts-section section">
+      <h3 class="contacts-head head">Contacts</h3>
+      <hr />
+      <div class="contacts-icons" id="contacts-icons"></div>
+    </div>
+
+    <div class="websites-section section">
+      <h3 class="websites-head head">Websites</h3>
+      <hr />
+      <div id="websites-container" class="websites-icons"></div>
+    </div>
 
     <div class="services-section section">
       <h3 class="services-head head">Services</h3>
       <hr />
-      <div class="services-icons">
-        <div class="service">
-          <p class="s-title">Service 1</p>
-        </div>
-        <div class="service">
-          <p class="s-title">NFC</p>
-        </div>
-        <div class="service">
-          <p class="s-title">Service Business</p>
-        </div>
-        <div class="service">
-          <p class="s-title">NFC</p>
-        </div>
-        <div class="service">
-          <p class="s-title">Service 1</p>
-        </div>
-        <div class="service">
-          <p class="s-title">Service 1</p>
-        </div>
-      </div>
+      <div class="services-icons" id="services-icons"></div>
       <div class="embedding">
         <div class="video">
-          <iframe src="https://www.youtube.com/embed/N5wpD9Ov_To" frameborder="0" allowfullscreen></iframe>
+          <iframe src="" frameborder="0" allowfullscreen></iframe>
         </div>
-        <!-- <div class="vid-overlay">
-          <p class="play">Play Video</p>
-        </div> -->
       </div>
     </div>
 
-    <div class="products-section section">
-      <h3 class="products-head head">Products</h3>
+    <div class="products-section section" id="products-section"></div>
+
+    <div class="awards_section section">
+      <h3 class="awards-head head">Awards</h3>
       <hr />
-      <div class="products-icons">
-        <div class="card">
-          <div class="card-image"></div>
-          <div class="card-content">
-            <h1 class="card-title">Smart Business Card</h1>
-            <p class="card-subtitle">INR 2000</p>
-            <button class="card-button">Frame 101</button>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-image"></div>
-          <div class="card-content">
-            <h1 class="card-title">Smart Business Card</h1>
-            <p class="card-subtitle">INR 2000</p>
-            <button class="card-button">Frame 101</button>
-          </div>
-        </div>
-      </div>
+    
+      <div id="award-cards"></div>
+    </div>
+    
+
+    <div class="certif-section section">
+      <h3 class="certif-head head">Certifications</h3>
+      <hr />
+      <div class="certif-icons" id="certif-icons"></div>
     </div>
 
     <div class="bank-section section">
       <h3 class="bank-head head">Bank Details</h3>
-      <div class="bank-icons">
-        <div class="bank-row">
-          <div class="bank-col">
-            <p class="dtl-head">Name</p>
-            <p class="dtl">Jane Doe</p>
-          </div>
-          <div class="bank-col"></div>
-        </div>
-        <div class="bank-row">
-          <div class="bank-col">
-            <p class="dtl-head">Account Number</p>
-            <p class="dtl">123456789</p>
-          </div>
-          <div class="bank-col">
-            <p class="dtl-head">Bank Name</p>
-            <p class="dtl">Bank of America</p>
-          </div>
-        </div>
-        <div class="bank-row">
-          <div class="bank-col">
-            <p class="dtl-head">Branch</p>
-            <p class="dtl">New York</p>
-          </div>
-          <div class="bank-col">
-            <p class="dtl-head">IFSC Code</p>
-            <p class="dtl">123456789</p>
-          </div>
-        </div>
-        <div class="bank-row">
-          <div class="bank-col">
-            <p class="dtl-head">Swift Code</p>
-            <p class="dtl">xxxxxxxxxxx</p>
-          </div>
-          <div class="bank-col">
-            <p class="dtl-head">VAT Number</p>
-            <p class="dtl">123456789</p>
-          </div>
-        </div>
-      </div>
+      <div class="bank-icons" id="bank-details"></div>
     </div>
-
     <div class="enq-section section">
       <h3 class="enq-head head">Enquiry</h3>
       <hr />
@@ -193,12 +123,11 @@
         <input type="text" name="email" id="email" placeholder="Email" />
         <input type="text" name="phone" id="phone" placeholder="Phone" />
         <input type="text" name="subject" id="subject" placeholder="Enter message" />
-        <input type="submit" class="submit_btn"/>
+        <input type="submit" class="submit_btn" />
       </div>
     </div>
+    
 
     <script src="script.js"></script>
-
-</body>
-
+  </body>
 </html>

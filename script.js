@@ -19,7 +19,7 @@ const lightMode = () => {
 const model_container = document.querySelector(".model_container");
 const model = document.querySelector("#model");
 
-function toggleModel(name, link, isLink) {
+function toggleModel(name, link) {
   model.innerHTML = "";
   console.log("length",link.length);
   const h1 = document.createElement("h1");
@@ -50,16 +50,17 @@ function inputCard(data) {
   input.classList.add("model_input");
   input.type = "text";
   input.value = data;
+  input.disabled = true;  
   input.name = "";
   input.id = "";
 
   // Create an i element
-  const i = document.createElement("i");
-  i.classList.add("fa", "fa-copy");
+  // const i = document.createElement("i");
+  // i.classList.add("fa", "fa-copy");
 
   // Append input and i elements to the div element
   div.appendChild(input);
-  div.appendChild(i);
+  // div.appendChild(i);
 
   // Return the div element as an HTML string
   return div;
@@ -100,7 +101,6 @@ const company = document.getElementById("company");
 const bio = document.getElementById("bio");
 
 // ----
-
 // Check if social media data is available
 const instagramID = "www.instagram.com/lorem/";
 const linkedinProfile = "";
@@ -113,36 +113,36 @@ let socialMediaHTML = "";
 // Check if Facebook is available
 if (facebook !== "") {
   socialMediaHTML += `
-    <button onclick="toggleModel('Facebook',['${facebook}'])" class="image">
+    <a href="https://${facebook}" class="image sm-icons">
       <i class="fa-brands fa-facebook-f" style="color: #7c56fe;"></i>
-    </button>
+    </a>
   `;
 }
 
 // Check if Instagram ID is available
 if (instagramID !== "") {
   socialMediaHTML += `
-    <button onclick="toggleModel('Instagram ID',['${instagramID}'])" class="image">
-      <i class="fa-brands fa-instagram" style="color: #7c56fe;"></i>
-    </button>
+    <a href="https://${instagramID}" class="image sm-icons">
+      <i class="fa-brands fa-instagram ins" style="color: #7c56fe;"></i>
+    </a>
   `;
 }
 
 // Check if LinkedIn profile is available
 if (linkedinProfile !== "") {
   socialMediaHTML += `
-    <button onclick="toggleModel('LinkedIn Profile',['${linkedinProfile}'])" class="image">
+    <a href="https://${linkedinProfile}" class="image sm-icons">
       <i class="fa-brands fa-linkedin-in" style="color: #7c56fe;"></i>
-    </button>
+    </a>
   `;
 }
 
 // Check if Twitter is available
 if (twitter !== "") {
   socialMediaHTML += `
-    <button onclick="toggleModel('Twitter',['${twitter}'])" class="image">
+    <a href="https://${twitter}" class="image sm-icons">
       <i class="fa-brands fa-twitter" style="color: #7c56fe;"></i>
-    </button>
+    </a>
   `;
 }
 
@@ -202,21 +202,27 @@ contactsData.forEach((data) => {
     }
   }
 });
-
 function createButton(type, value) {
   const button = document.createElement("button");
-  button.onclick = () => toggleModel(type, [value]);
   button.classList.add("image");
 
   const icon = document.createElement("i");
   if (type === "Phone Number") {
     icon.classList.add("fa-solid", "fa-phone");
+    button.onclick = () => window.open(`tel:${value}`);
   } else if (type === "Email") {
     icon.classList.add("fa-solid", "fa-at");
+    button.onclick = () => window.open(`mailto:${value}`);
   } else if (type === "Address") {
     icon.classList.add("fa-solid", "fa-location-dot");
+    button.onclick = () => {
+      // replace commas with plus signs in address
+      const address = value.replace(/,/g, "+");
+      window.open(`https://www.google.com/maps/search/?api=1&query=${address}`);
+    };
   } else if (type === "Whatsapp") {
     icon.classList.add("fa-brands", "fa-whatsapp");
+    button.onclick = () => window.open(`https://wa.me/${value}`);
   }
   icon.style.color = "#7c56fe";
 
@@ -224,6 +230,7 @@ function createButton(type, value) {
 
   return button;
 }
+
 
 // ---
 
@@ -254,3 +261,231 @@ if (linksData.length > 0) {
     .join("");
   websitesContainer.innerHTML = linkCardsHtml;
 }
+
+// define an array of services
+const services = [
+  { title: 'Service 1' },
+  { title: 'NFC' },
+  { title: 'Service Business' },
+  { title: 'NFC' },
+  { title: 'Service 1' },
+  { title: 'Service 1' },
+  { title: 'Service 1' },
+  { title: 'NFC' },
+  { title: 'Service Business' },
+];
+
+// get the services-icons container
+const servicesIcons = document.getElementById('services-icons');
+
+// loop through the services array and dynamically create the service elements
+services.forEach(service => {
+  const serviceElem = document.createElement('div');
+  serviceElem.classList.add('service');
+  const titleElem = document.createElement('p');
+  titleElem.classList.add('s-title');
+  titleElem.textContent = service.title;
+  serviceElem.appendChild(titleElem);
+  servicesIcons.appendChild(serviceElem);
+});
+
+// get the video container and iframe element
+const videoContainer = document.querySelector('.embedding .video');
+const videoFrame = videoContainer.querySelector('iframe');
+
+// set the YouTube video URL
+const youtubeUrl = 'https://www.youtube.com/embed/N5wpD9Ov_To';
+
+// set the src attribute of the iframe element
+videoFrame.setAttribute('src', youtubeUrl);
+
+
+// Define an array of products
+const products = [
+  {
+    image: 'path/to/image1.jpg',
+    title: 'Smart Business Card',
+    subtitle: 'INR 2000',
+    buttonLabel: 'Frame 101',
+  },
+  {
+    image: 'path/to/image2.jpg',
+    title: 'Smart Business Card',
+    subtitle: 'INR 2000',
+    buttonLabel: 'Frame 101',
+  },
+];
+
+// Get the products section container
+const productsSection = document.getElementById('products-section');
+
+// Create the products heading element
+const productsHead = document.createElement('h3');
+productsHead.classList.add('products-head', 'head');
+productsHead.textContent = 'Products';
+
+// Create the products icons container element
+const productsIcons = document.createElement('div');
+productsIcons.classList.add('products-icons');
+
+// Loop through the products array and dynamically create the card elements
+products.forEach(product => {
+  const cardElem = document.createElement('div');
+  cardElem.classList.add('card');
+
+  const cardImageElem = document.createElement('div');
+  cardImageElem.classList.add('card-image');
+  cardImageElem.style.backgroundImage = `url(${product.image})`;
+  cardElem.appendChild(cardImageElem);
+
+  const cardContentElem = document.createElement('div');
+  cardContentElem.classList.add('card-content');
+  cardElem.appendChild(cardContentElem);
+
+  const cardTitleElem = document.createElement('h1');
+  cardTitleElem.classList.add('card-title');
+  cardTitleElem.textContent = product.title;
+  cardContentElem.appendChild(cardTitleElem);
+
+  const cardSubtitleElem = document.createElement('p');
+  cardSubtitleElem.classList.add('card-subtitle');
+  cardSubtitleElem.textContent = product.subtitle;
+  cardContentElem.appendChild(cardSubtitleElem);
+
+  const cardButtonElem = document.createElement('button');
+  cardButtonElem.classList.add('card-button');
+  cardButtonElem.textContent = product.buttonLabel;
+  cardContentElem.appendChild(cardButtonElem);
+
+  productsIcons.appendChild(cardElem);
+});
+
+// Add the elements to the products section container
+productsSection.appendChild(productsHead);
+productsSection.appendChild(document.createElement('hr'));
+productsSection.appendChild(productsIcons);
+
+
+// Define the bank details data as an object
+const bankDetails = {
+  name: 'Jane Doe',
+  accountNumber: '123456789',
+  bankName: 'Bank of America',
+  branch: 'New York',
+  ifscCode: '123456789',
+  swiftCode: 'xxxxxxxxxxx',
+  vatNumber: '123456789'
+};
+
+// Get the bank details container element
+const bankDetailsContainer = document.getElementById('bank-details');
+
+// Create a function to dynamically render the bank details
+function renderBankDetails() {
+  // Check if all bank details are empty
+  const isEmpty = Object.values(bankDetails).every(val => val === '');
+  if (isEmpty) {
+    // If all bank details are empty, don't render anything
+    bankDetailsContainer.innerHTML = '';
+    return;
+  }
+  
+  // Otherwise, create the bank details HTML dynamically
+  let bankDetailsHTML = '';
+  bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Name</p><p class="dtl">${bankDetails.name}</p></div><div class="bank-col"></div></div>`;
+  bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Account Number</p><p class="dtl">${bankDetails.accountNumber}</p></div><div class="bank-col"><p class="dtl-head">Bank Name</p><p class="dtl">${bankDetails.bankName}</p></div></div>`;
+  bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Branch</p><p class="dtl">${bankDetails.branch}</p></div><div class="bank-col"><p class="dtl-head">IFSC Code</p><p class="dtl">${bankDetails.ifscCode}</p></div></div>`;
+  bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Swift Code</p><p class="dtl">${bankDetails.swiftCode}</p></div><div class="bank-col"><p class="dtl-head">VAT Number</p><p class="dtl">${bankDetails.vatNumber}</p></div></div>`;
+  
+  // Set the bank details container HTML to the dynamically generated HTML
+  bankDetailsContainer.innerHTML = bankDetailsHTML;
+}
+
+// Call the renderBankDetails function to render the bank details
+renderBankDetails();
+
+
+
+if (email) {
+  const emailInputs = document.querySelectorAll('.enq-icons input[type="text"]');
+  const submitBtn = document.querySelector('.enq-icons .submit_btn');
+  submitBtn.addEventListener("click", () => {
+    const name = emailInputs[0].value;
+    const email = emailInputs[1].value;
+    const phone = emailInputs[2].value;
+    const subject = emailInputs[3].value;
+    const mailtoLink = `mailto:${email}?subject=${subject}&body=Name: ${name}%0APhone: ${phone}`;
+    window.location.href = mailtoLink;
+  });
+} else {
+  const enqSection = document.querySelector('.enq-section');
+  enqSection.style.display = "none";
+}
+
+const awardsData = [
+  {
+    name: "Award 1",
+    authority: "Authority 1"
+  },
+  {
+    name: "Award 2",
+    authority: "Authority 2"
+  },
+  {
+    name: "Award 3",
+    authority: "Authority 3"
+  },
+];
+
+const awardCardsDiv = document.getElementById("award-cards");
+
+awardsData.forEach((award) => {
+  const card = createAwardCard(award);
+  awardCardsDiv.appendChild(card);
+  awardCardsDiv.addEventListener("click",()=> toggleModel('Award', [award.name, award.authority]));
+});
+
+function createAwardCard(award) {
+  const card = document.createElement("div");
+  card.classList.add("award_card");
+
+  const name = document.createElement("h3");
+  name.textContent = award.name;
+  card.appendChild(name);
+
+  const authority = document.createElement("p");
+  authority.textContent = award.authority;
+  card.appendChild(authority);
+
+  return card;
+}
+
+
+// define an array of services
+const certif = [
+  { title: 'Service 1' },
+  { title: 'NFC' },
+  { title: 'Service Business' },
+  { title: 'NFC' },
+  { title: 'Service 1' },
+  { title: 'Service 1' },
+  { title: 'Service 1' },
+  { title: 'NFC' },
+  { title: 'Service Business' },
+];
+
+// get the services-icons container
+const certifIcons = document.getElementById('certif-icons');
+
+// loop through the services array and dynamically create the service elements
+certif.forEach(service => {
+  const serviceElem = document.createElement('div');
+  serviceElem.classList.add('service');
+  const titleElem = document.createElement('p');
+  titleElem.classList.add('s-title');
+  titleElem.textContent = service.title;
+  serviceElem.appendChild(titleElem);
+  certifIcons.appendChild(serviceElem);
+});
+
+
