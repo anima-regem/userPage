@@ -21,13 +21,13 @@ const model = document.querySelector("#model");
 
 function toggleModel(name, link, isLink) {
   model.innerHTML = "";
-  console.log(link.length);
+  console.log("length",link.length);
   const h1 = document.createElement("h1");
   h1.classList.add("model_heading");
   h1.innerHTML = name;
 
   model.appendChild(h1);
-
+  console.log(link);
   link.forEach((item) => {
     var datacard = inputCard(item);
     model.appendChild(datacard);
@@ -99,20 +99,19 @@ const position = document.getElementById("position");
 const company = document.getElementById("company");
 const bio = document.getElementById("bio");
 
-
 // ----
 
 // Check if social media data is available
-const instagramID = 'www.instagram.com/lorem/';
-const linkedinProfile = '';
-const twitter = 'www.Twitter.com/lorem/';
-const facebook = 'www.facebook.com/lorem/';
+const instagramID = "www.instagram.com/lorem/";
+const linkedinProfile = "";
+const twitter = "www.Twitter.com/lorem/";
+const facebook = "www.facebook.com/lorem/";
 
 // Create an empty HTML string
-let socialMediaHTML = '';
+let socialMediaHTML = "";
 
 // Check if Facebook is available
-if (facebook !== '') {
+if (facebook !== "") {
   socialMediaHTML += `
     <button onclick="toggleModel('Facebook',['${facebook}'])" class="image">
       <i class="fa-brands fa-facebook-f" style="color: #7c56fe;"></i>
@@ -121,7 +120,7 @@ if (facebook !== '') {
 }
 
 // Check if Instagram ID is available
-if (instagramID !== '') {
+if (instagramID !== "") {
   socialMediaHTML += `
     <button onclick="toggleModel('Instagram ID',['${instagramID}'])" class="image">
       <i class="fa-brands fa-instagram" style="color: #7c56fe;"></i>
@@ -130,7 +129,7 @@ if (instagramID !== '') {
 }
 
 // Check if LinkedIn profile is available
-if (linkedinProfile !== '') {
+if (linkedinProfile !== "") {
   socialMediaHTML += `
     <button onclick="toggleModel('LinkedIn Profile',['${linkedinProfile}'])" class="image">
       <i class="fa-brands fa-linkedin-in" style="color: #7c56fe;"></i>
@@ -139,7 +138,7 @@ if (linkedinProfile !== '') {
 }
 
 // Check if Twitter is available
-if (twitter !== '') {
+if (twitter !== "") {
   socialMediaHTML += `
     <button onclick="toggleModel('Twitter',['${twitter}'])" class="image">
       <i class="fa-brands fa-twitter" style="color: #7c56fe;"></i>
@@ -148,12 +147,12 @@ if (twitter !== '') {
 }
 
 // If no social media data is available, show a message
-if (socialMediaHTML === '') {
-  socialMediaHTML = '<p>No social media data available.</p>';
+if (socialMediaHTML === "") {
+  socialMediaHTML = "<p>No social media data available.</p>";
 }
 
 // Render the social media section
-const socialMediaSection = document.getElementById('social-media-section');
+const socialMediaSection = document.getElementById("social-media-section");
 socialMediaSection.innerHTML = `
   <div class="sm-section section">
     <h3 class="sm-head head">Social Media</h3>
@@ -164,38 +163,40 @@ socialMediaSection.innerHTML = `
   </div>
 `;
 
-
 // ---
+
+const data = ["123, Elite street, Bangalore.", "Lorem ipsum", "xxxxxx"]
+console.log(data.length)
 
 const contactsData = [
   {
-    type: 'Phone Number',
-    value: '9265730149'
+    type: "Phone Number",
+    value: "9265730149",
   },
   {
-    type: 'Email',
-    value: 'example@gmail.com'
+    type: "Email",
+    value: ["example@gmail.com"],
   },
   {
-    type: 'Address',
-    value: ['123, Elite street, Bangalore.', 'Lorem ipsum', 'xxxxxx']
+    type: "Address",
+    value: ["123, Elite street, Bangalore.", "Lorem ipsum", "xxxxxx"],
   },
   {
-    type: 'Whatsapp',
-    value: 'example@gmail.com'
-  }
+    type: "Whatsapp",
+    value: "example@gmail.com",
+  },
 ];
 
-const contactsIconsDiv = document.getElementById('contacts-icons');
+const contactsIconsDiv = document.getElementById("contacts-icons");
 
-contactsData.forEach(data => {
+contactsData.forEach((data) => {
   if (Array.isArray(data.value)) {
     if (data.value.length > 0) {
-      const button = createButton(data.type, data.value.join(', '));
+      const button = createButton(data.type, data.value.join(", "));
       contactsIconsDiv.appendChild(button);
     }
   } else {
-    if (data.value !== '') {
+    if (data.value !== "") {
       const button = createButton(data.type, data.value);
       contactsIconsDiv.appendChild(button);
     }
@@ -203,24 +204,24 @@ contactsData.forEach(data => {
 });
 
 function createButton(type, value) {
-  const button = document.createElement('button');
+  const button = document.createElement("button");
   button.onclick = () => toggleModel(type, [value]);
-  button.classList.add('image');
-  
-  const icon = document.createElement('i');
-  if (type === 'Phone Number') {
-    icon.classList.add('fa-solid', 'fa-phone');
-  } else if (type === 'Email') {
-    icon.classList.add('fa-solid', 'fa-at');
-  } else if (type === 'Address') {
-    icon.classList.add('fa-solid', 'fa-location-dot');
-  } else if (type === 'Whatsapp') {
-    icon.classList.add('fa-brands', 'fa-whatsapp');
+  button.classList.add("image");
+
+  const icon = document.createElement("i");
+  if (type === "Phone Number") {
+    icon.classList.add("fa-solid", "fa-phone");
+  } else if (type === "Email") {
+    icon.classList.add("fa-solid", "fa-at");
+  } else if (type === "Address") {
+    icon.classList.add("fa-solid", "fa-location-dot");
+  } else if (type === "Whatsapp") {
+    icon.classList.add("fa-brands", "fa-whatsapp");
   }
-  icon.style.color = '#7c56fe';
-  
+  icon.style.color = "#7c56fe";
+
   button.appendChild(icon);
-  
+
   return button;
 }
 
@@ -230,7 +231,7 @@ function createButton(type, value) {
 const linksData = [
   { name: "Link 1", url: "https://example.com/link1" },
   { name: "Link 2", url: "https://example.com/link2" },
-  { name: "Link 3", url: "https://example.com/link3" }
+  { name: "Link 3", url: "https://example.com/link3" },
 ];
 
 // function to generate link card HTML for a single link
@@ -248,6 +249,8 @@ function generateLinkCard(linkData) {
 // generate link cards based on available data
 const websitesContainer = document.getElementById("websites-container");
 if (linksData.length > 0) {
-  const linkCardsHtml = linksData.map(linkData => generateLinkCard(linkData)).join("");
+  const linkCardsHtml = linksData
+    .map((linkData) => generateLinkCard(linkData))
+    .join("");
   websitesContainer.innerHTML = linkCardsHtml;
 }
