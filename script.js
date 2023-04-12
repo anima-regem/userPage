@@ -66,13 +66,13 @@ function inputCard(data) {
   return div;
 }
 
-const personData =  {
-    name: "John Doe",
-    email: "",
-    phone: "1234567890",
-  }
+const personData = {
+  name: "John Doe",
+  email: "",
+  phone: "1234567890",
+};
 
-const createVcard = ( ) => {
+const createVcard = () => {
   const vcardData = [
     "BEGIN:VCARD",
     "VERSION:3.0",
@@ -170,17 +170,10 @@ socialMediaSection.innerHTML = `
 
 // ---
 
-const data = ["Moolmakuzhy, Thycatuserry PO, Cherthala, Alappuzha.", "Kerala", "688528"];
-console.log(data.length);
-
 const contactsData = [
   {
     type: "Phone Number",
     value: "9265730149",
-  },
-  {
-    type: "Contact",
-    value: "1234672362",
   },
   {
     type: "Email",
@@ -188,8 +181,11 @@ const contactsData = [
   },
   {
     type: "Address",
-    value: ["Moolmakuzhy, Thycatuserry PO, Cherthala, Alappuzha.", "Kerala", "688528"],
-
+    value: [
+      "C7 , Block ",
+      "PentaPark Appartment , Poothole , Thrissur",
+      "680004",
+    ],
   },
   {
     type: "Whatsapp",
@@ -200,17 +196,9 @@ const contactsData = [
 const contactsIconsDiv = document.getElementById("contacts-icons");
 
 contactsData.forEach((data) => {
-  if (Array.isArray(data.value)) {
-    if (data.value.length > 0) {
-      const button = createButton(data.type, data.value.join(", "));
-      contactsIconsDiv.appendChild(button);
-    }
-  } else {
-    if (data.value !== "") {
+
       const button = createButton(data.type, data.value);
       contactsIconsDiv.appendChild(button);
-    }
-  }
 });
 function createButton(type, value) {
   const button = document.createElement("button");
@@ -223,15 +211,10 @@ function createButton(type, value) {
   } else if (type === "Email") {
     icon.classList.add("fa-solid", "fa-at");
     button.onclick = () => window.open(`mailto:${value}`);
-  }else if (type === "Contact") {
-    icon.classList.add("fa-solid", "fa-file");
-    button.onclick = () => createVcard();
   } else if (type === "Address") {
     icon.classList.add("fa-solid", "fa-location-dot");
     button.onclick = () => {
-      // replace commas with plus signs in address
-      const address = value.replace(/,/g, "+");
-      window.open(`https://www.google.com/maps/search/?api=1&query=${address}`);
+      toggleModel("Address", value);
     };
   } else if (type === "Whatsapp") {
     icon.classList.add("fa-brands", "fa-whatsapp");
@@ -452,9 +435,6 @@ const awardCardsDiv = document.getElementById("award-cards");
 awardsData.forEach((award) => {
   const card = createAwardCard(award);
   awardCardsDiv.appendChild(card);
-  awardCardsDiv.addEventListener("click", () =>
-    toggleModel("Award", [award.name, award.authority])
-  );
 });
 
 function createAwardCard(award) {
@@ -474,15 +454,7 @@ function createAwardCard(award) {
 
 // define an array of services
 const certif = [
-  { title: "Service 1" },
-  { title: "NFC" },
-  { title: "Service Business" },
-  { title: "NFC" },
-  { title: "Service 1" },
-  { title: "Service 1" },
-  { title: "Service 1" },
-  { title: "NFC" },
-  { title: "Service Business" },
+  { title: "Service 1", awardName: "Award 1", awardAuthority: "Authority 1" },
 ];
 
 // get the services-icons container
@@ -497,4 +469,13 @@ certif.forEach((service) => {
   titleElem.textContent = service.title;
   serviceElem.appendChild(titleElem);
   certifIcons.appendChild(serviceElem);
+  serviceElem.addEventListener("click", () =>
+    toggleModel("Certificate", [service.awardName, service.awardAuthority])
+  );
 });
+
+
+const saveContactBtn = document.getElementById("save-contact");
+saveContactBtn.addEventListener("click", () => {
+  createVcard();
+})

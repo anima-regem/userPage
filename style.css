@@ -31,6 +31,9 @@ h3 {
 
   --bankBorder: #000000;
 
+  --btnBg: #BEFF6C;
+  --btnTxt: #7C56FE;
+
   
 }
 :root.dark {
@@ -55,6 +58,9 @@ h3 {
   --modelTxt: #BEFF6C;
 
   --bankBorder: #c5c5c5;
+
+  --btnBg: #1C1C1E;
+  --btnTxt: #BEFF6C;
 }
 
 body {
@@ -702,4 +708,22 @@ iframe {
   margin: 0px;
   width: 100%;
   flex-wrap: wrap;
+}
+
+#save-contact{
+  margin-top: 38px;
+  width: 178px;
+  height: 51px;
+  border-radius: 157px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--btnBg);
+  color: var(--btnTxt);
+}
+#save-contact > div > p{
+  margin: 0px;
+  padding: 0px;
+  font-weight: 600;
 }
