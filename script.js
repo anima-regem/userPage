@@ -157,11 +157,6 @@ if (twitter !== "") {
   `;
 }
 
-// If no social media data is available, show a message
-if (socialMediaHTML === "") {
-  socialMediaHTML = "<p>No social media data available.</p>";
-}
-
 // Render the social media section
 const socialMediaSection = document.getElementById("social-media-section");
 socialMediaSection.innerHTML = `
@@ -197,6 +192,10 @@ const contactsData = [
     type: "Whatsapp",
     value: "1234672362",
   },
+  {
+    type: "Whatsapp Business",
+    value: "1234672362",
+  }
 ];
 
 if(contactsData.length === 0) {
@@ -229,6 +228,13 @@ function createButton(type, value) {
   } else if (type === "Whatsapp") {
     icon.classList.add("fa-brands", "fa-whatsapp");
     button.onclick = () => window.open(`https://wa.me/${value}`);
+  }
+  else if(type === "Whatsapp Business") {
+      const img = document.createElement("img");
+      img.src = "wb.svg";
+      img.alt = "WhatsApp Business";
+      button.appendChild(img);
+      button.onclick = () => window.open(`https://wa.me/${value}`);    
   }
   icon.style.color = "#7c56fe";
 
