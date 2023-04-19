@@ -195,19 +195,18 @@ const contactsData = [
   {
     type: "Whatsapp Business",
     value: "1234672362",
-  }
+  },
 ];
 
-if(contactsData.length === 0) {
+if (contactsData.length === 0) {
   document.getElementsByClassName("contacts-section")[0].style.display = "none";
 }
 
 const contactsIconsDiv = document.getElementById("contacts-icons");
 
 contactsData.forEach((data) => {
-
-      const button = createButton(data.type, data.value);
-      contactsIconsDiv.appendChild(button);
+  const button = createButton(data.type, data.value);
+  contactsIconsDiv.appendChild(button);
 });
 function createButton(type, value) {
   const button = document.createElement("button");
@@ -228,13 +227,12 @@ function createButton(type, value) {
   } else if (type === "Whatsapp") {
     icon.classList.add("fa-brands", "fa-whatsapp");
     button.onclick = () => window.open(`https://wa.me/${value}`);
-  }
-  else if(type === "Whatsapp Business") {
-      const img = document.createElement("img");
-      img.src = "wb.svg";
-      img.alt = "WhatsApp Business";
-      button.appendChild(img);
-      button.onclick = () => window.open(`https://wa.me/${value}`);    
+  } else if (type === "Whatsapp Business") {
+    const img = document.createElement("img");
+    img.src = "wb.svg";
+    img.alt = "WhatsApp Business";
+    button.appendChild(img);
+    button.onclick = () => window.open(`https://wa.me/${value}`);
   }
   icon.style.color = "#7c56fe";
 
@@ -247,13 +245,13 @@ function createButton(type, value) {
 
 // example data, replace with your own
 const linksData = [
-//   { name: "Link 1", url: "https://example.com/link1" },
-//   { name: "Link 2", url: "https://example.com/link2" },
-//   { name: "Link 3", url: "https://example.com/link3" },
+  //   { name: "Link 1", url: "https://example.com/link1" },
+  //   { name: "Link 2", url: "https://example.com/link2" },
+  //   { name: "Link 3", url: "https://example.com/link3" },
 ];
 
-if (linksData.length==0){
-  document.getElementsByClassName("websites-section")[0].style.display="none";
+if (linksData.length == 0) {
+  document.getElementsByClassName("websites-section")[0].style.display = "none";
 }
 
 // function to generate link card HTML for a single link
@@ -290,8 +288,8 @@ const services = [
   { title: "Service Business" },
 ];
 
-if (services.length==0){
-  document.getElementsByClassName("services-section")[0].style.display="none";
+if (services.length == 0) {
+  document.getElementsByClassName("services-section")[0].style.display = "none";
 }
 
 // get the services-icons container
@@ -334,8 +332,8 @@ const products = [
   },
 ];
 
-if (products.length==0){
-  document.getElementsByClassName("products-section")[0].style.display="none";
+if (products.length == 0) {
+  document.getElementsByClassName("products-section")[0].style.display = "none";
 }
 
 // Get the products section container
@@ -398,11 +396,11 @@ const bankDetails = {
   vatNumber: "123456789",
 };
 
+let bankVisibility = false;
 
-if (Object.values(bankDetails).every((val) => val === "")){
-  document.getElementsByClassName("bank-section")[0].style.display="none";
+if (Object.values(bankDetails).every((val) => val === "")) {
+  document.getElementsByClassName("bank-section")[0].style.display = "none";
 }
-
 
 // Get the bank details container element
 const bankDetailsContainer = document.getElementById("bank-details");
@@ -411,7 +409,7 @@ const bankDetailsContainer = document.getElementById("bank-details");
 function renderBankDetails() {
   // Check if all bank details are empty
   const isEmpty = Object.values(bankDetails).every((val) => val === "");
-  if (isEmpty) {
+  if (isEmpty || bankVisibility) {
     // If all bank details are empty, don't render anything
     bankDetailsContainer.innerHTML = "";
     return;
@@ -449,6 +447,8 @@ if (email) {
   enqSection.style.display = "none";
 }
 
+// --------
+
 const awardsData = [
   {
     name: "Award 1",
@@ -464,8 +464,16 @@ const awardsData = [
   },
 ];
 
-if (awardsData.length === 0) {
-  document.getElementsByClassName("awards-section")[0].style.display = "none";
+let awardVisibility = false;
+
+// main code
+
+if (!awardVisibility || awardsData.length === 0) {
+  let e = document.getElementsByClassName("awards-section");
+  console.log(e);
+  if (e.length > 0) {
+    document.getElementsByClassName("awards-section")[0].style.display = "none";
+  }
 }
 
 const awardCardsDiv = document.getElementById("award-cards");
@@ -490,13 +498,24 @@ function createAwardCard(award) {
   return card;
 }
 
+// --------
+
 // define an array of services
 const certif = [
   { title: "Service 1", awardName: "Award 1", awardAuthority: "Authority 1" },
 ];
 
-if (certif.length === 0) {
-  document.getElementsByClassName("certif-section")[0].style.display = "none";
+let serviceVisibility = false;
+
+// main code
+console.log(certif.length);
+console.log(!serviceVisibility || certif.length === 5);
+
+if (true) {
+  const certifSection = document.getElementById("certif-section");
+  if (certifSection) {
+    certifSection.style.display = "none";
+  }
 }
 
 // get the services-icons container
@@ -516,8 +535,9 @@ certif.forEach((service) => {
   );
 });
 
-
 const saveContactBtn = document.getElementById("save-contact");
 saveContactBtn.addEventListener("click", () => {
   createVcard();
-})
+});
+
+// --------
