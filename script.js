@@ -111,55 +111,81 @@ const position = document.getElementById("position");
 const company = document.getElementById("company");
 const bio = document.getElementById("bio");
 
+
 // ----
 // Check if social media data is available
-const instagramID = "www.instagram.com/lorem/";
-const linkedinProfile = "";
-const twitter = "www.Twitter.com/lorem/";
-const facebook = "www.facebook.com/lorem/";
+
+const socialMedia = {
+  status: true,
+  socials: [
+    {
+      _id: {
+        $oid: "643d798412ca41ecc1784a3a"
+      },
+      label: "Instagram ID",
+      value: "devniyaz",
+      type: "instagram"
+    },
+    {
+      _id: {
+        $oid: "643d798412ca41ecc1784a3b"
+      },
+      label: "Linkedin Profile",
+      value: "linkedin.com/in/devniyaz",
+      type: "linkedin"
+    },
+    {
+      _id: {
+        $oid: "643d798412ca41ecc1784a3c"
+      },
+      label: "Twitter",
+      value: "devniyaz",
+      type: "twitter"
+    },
+    {
+      _id: {
+        $oid: "643db1f57f14d8b41f43923e"
+      },
+      label: "Github",
+      value: "github.com/devniyaz",
+      type: "other"
+    }
+  ]
+};
 
 // Create an empty HTML string
 let socialMediaHTML = "";
 
-// Check if Facebook is available
-if (facebook !== "") {
-  socialMediaHTML += `
-    <a href="https://${facebook}" class="image sm-icons">
-      <i class="fa-brands fa-facebook-f" style="color: #7c56fe;"></i>
-    </a>
-  `;
-}
-
-// Check if Instagram ID is available
-if (instagramID !== "") {
-  socialMediaHTML += `
-    <a href="https://${instagramID}" class="image sm-icons">
-      <i class="fa-brands fa-instagram ins" style="color: #7c56fe;"></i>
-    </a>
-  `;
-}
-
-// Check if LinkedIn profile is available
-if (linkedinProfile !== "") {
-  socialMediaHTML += `
-    <a href="https://${linkedinProfile}" class="image sm-icons">
-      <i class="fa-brands fa-linkedin-in" style="color: #7c56fe;"></i>
-    </a>
-  `;
-}
-
-// Check if Twitter is available
-if (twitter !== "") {
-  socialMediaHTML += `
-    <a href="https://${twitter}" class="image sm-icons">
-      <i class="fa-brands fa-twitter" style="color: #7c56fe;"></i>
-    </a>
-  `;
+// Loop through each social media object in the list
+for (const social of socialMedia.socials) {
+  // Check if the social media value is available
+  if (social.value !== "") {
+    // Build the social media link HTML
+    let iconClass = "";
+    switch (social.type) {
+      case "instagram":
+        iconClass = "fa-brands fa-instagram ins";
+        break;
+      case "linkedin":
+        iconClass = "fa-brands fa-linkedin-in";
+        break;
+      case "twitter":
+        iconClass = "fa-brands fa-twitter";
+        break;
+      default:
+        iconClass = "fa-solid fa-link";
+    }
+    socialMediaHTML += `
+      <a href="https://${social.value}" class="image sm-icons">
+        <i class="${iconClass}" style="color: #7c56fe;"></i>
+      </a>
+    `;
+  }
 }
 
 // Render the social media section
 const socialMediaSection = document.getElementById("social-media-section");
-socialMediaSection.innerHTML = `
+socialMediaSection.innerHTML = socialMedia.status?`
   <div class="sm-section section">
     <h3 class="sm-head head">Social Media</h3>
     <hr />
@@ -167,9 +193,15 @@ socialMediaSection.innerHTML = `
       ${socialMediaHTML}
     </div>
   </div>
-`;
+`:'';
 
-// ---
+
+
+
+// // ---
+
+// ----
+// Check if social media data is available
 
 const contactsData = [
   {
@@ -198,7 +230,9 @@ const contactsData = [
   },
 ];
 
-if (contactsData.length === 0) {
+let contactVisible = false;
+
+if (!contactVisible || contactsData.length === 0) {
   document.getElementsByClassName("contacts-section")[0].style.display = "none";
 }
 
@@ -245,12 +279,14 @@ function createButton(type, value) {
 
 // example data, replace with your own
 const linksData = [
-  //   { name: "Link 1", url: "https://example.com/link1" },
+    { name: "Link 1", url: "https://example.com/link1" },
   //   { name: "Link 2", url: "https://example.com/link2" },
   //   { name: "Link 3", url: "https://example.com/link3" },
 ];
 
-if (linksData.length == 0) {
+let linkStatus = true;
+
+if (!linkStatus || linksData.length == 0) {
   document.getElementsByClassName("websites-section")[0].style.display = "none";
 }
 
@@ -288,7 +324,9 @@ const services = [
   { title: "Service Business" },
 ];
 
-if (services.length == 0) {
+let serviceStatus = false;
+
+if (!serviceStatus || services.length == 0) {
   document.getElementsByClassName("services-section")[0].style.display = "none";
 }
 
@@ -310,11 +348,16 @@ services.forEach((service) => {
 const videoContainer = document.querySelector(".embedding .video");
 const videoFrame = videoContainer.querySelector("iframe");
 
+let ytStatus = false;
+
 // set the YouTube video URL
-const youtubeUrl = "https://www.youtube.com/embed/N5wpD9Ov_To";
+const youtubeUrl = ytStatus?"https://www.youtube.com/embed/N5wpD9Ov_To":"";
+videoFrame.style.display= ytStatus?"block":"none";
 
 // set the src attribute of the iframe element
 videoFrame.setAttribute("src", youtubeUrl);
+
+// ---------
 
 // Define an array of products
 const products = [
@@ -332,7 +375,9 @@ const products = [
   },
 ];
 
-if (products.length == 0) {
+let productVisibility = false;
+
+if (!productVisibility||products.length == 0) {
   document.getElementsByClassName("products-section")[0].style.display = "none";
 }
 
@@ -385,6 +430,9 @@ productsSection.appendChild(productsHead);
 productsSection.appendChild(document.createElement("hr"));
 productsSection.appendChild(productsIcons);
 
+
+// -------
+
 // Define the bank details data as an object
 const bankDetails = {
   name: "Jane Doe",
@@ -398,7 +446,7 @@ const bankDetails = {
 
 let bankVisibility = false;
 
-if (Object.values(bankDetails).every((val) => val === "")) {
+if (!bankVisibility || Object.values(bankDetails).every((val) => val === "")) {
   document.getElementsByClassName("bank-section")[0].style.display = "none";
 }
 
@@ -469,11 +517,9 @@ let awardVisibility = false;
 // main code
 
 if (!awardVisibility || awardsData.length === 0) {
-  let e = document.getElementsByClassName("awards-section");
-  console.log(e);
-  if (e.length > 0) {
-    document.getElementsByClassName("awards-section")[0].style.display = "none";
-  }
+  let e = document.getElementsByClassName("awards_section");
+    document.getElementsByClassName("awards_section")[0].style.display = "none";
+  
 }
 
 const awardCardsDiv = document.getElementById("award-cards");
@@ -505,13 +551,11 @@ const certif = [
   { title: "Service 1", awardName: "Award 1", awardAuthority: "Authority 1" },
 ];
 
-let serviceVisibility = false;
+let certifVisibility = false;
 
 // main code
-console.log(certif.length);
-console.log(!serviceVisibility || certif.length === 5);
 
-if (true) {
+if (!certifVisibility || certif.length === 0) {
   const certifSection = document.getElementById("certif-section");
   if (certifSection) {
     certifSection.style.display = "none";
