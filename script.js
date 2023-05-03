@@ -324,7 +324,7 @@ const services = [
   { title: "Service Business" },
 ];
 
-let serviceStatus = false;
+let serviceStatus = true;
 
 if (!serviceStatus || services.length == 0) {
   document.getElementsByClassName("services-section")[0].style.display = "none";
@@ -348,7 +348,7 @@ services.forEach((service) => {
 const videoContainer = document.querySelector(".embedding .video");
 const videoFrame = videoContainer.querySelector("iframe");
 
-let ytStatus = false;
+let ytStatus = true;
 
 // set the YouTube video URL
 const youtubeUrl = ytStatus?"https://www.youtube.com/embed/N5wpD9Ov_To":"";
@@ -585,3 +585,6 @@ saveContactBtn.addEventListener("click", () => {
 });
 
 // --------
+const formEmail = ''
+const formSubmit = document.querySelector('form')
+formSubmit.setAttribute("action", `mailto:${formEmail}`)

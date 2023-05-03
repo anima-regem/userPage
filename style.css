@@ -403,6 +403,7 @@ input[name="subject"]::placeholder {
   min-height: 171px;
   min-width: 350px;
   height: auto;
+  margin-top: 10%;
 }
 
 iframe {
