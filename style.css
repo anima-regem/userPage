@@ -553,9 +553,8 @@ iframe {
 
 .profile-image-overlay img {
   position: relative;
-  top: -20px;
   width: 100%;
-  border-radius: 32px;
+
 }
 
 .glassy-strip {
