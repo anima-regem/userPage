@@ -244,6 +244,7 @@ input[name="subject"]::placeholder {
   background-color: var(--bg);
   border-radius: 14px;
   position: relative;
+  margin: 2%;
   /* padding: 2px; */
   /* padding: 2px 0 10px 0; */
 }
@@ -321,7 +322,7 @@ input[name="subject"]::placeholder {
 }
 
 .section hr {
-  width: 60%;
+  width: 60vw;
   border: 1px solid var(--lightAc);
   margin: 2.5%;
 }
@@ -340,7 +341,6 @@ input[name="subject"]::placeholder {
   align-items: center;
   flex-direction: column;
   color: var(--linkBgDark);
-  margin: 7.5%;
   width: auto;
   margin-bottom: 0px;
 }
@@ -380,7 +380,7 @@ input[name="subject"]::placeholder {
 }
 
 .submit_btn {
-  width: 90%;
+  width: 80%;
 }
 
 .embedding {
@@ -393,15 +393,13 @@ input[name="subject"]::placeholder {
   height: auto;
   margin: 6%;
   min-height: 171px;
-  height: auto;
 }
 
 .video {
   /* margin: 10%; */
-  width: 100%;
-  height: auto;
+  /* width: ; */
   min-height: 171px;
-  min-width: 350px;
+  min-width: 75vw;
   height: auto;
   margin-top: 10%;
 }
@@ -695,7 +693,6 @@ iframe {
   align-items: center;
   flex-direction: column;
   color: var(--linkBgDark);
-  margin: 7.5%;
   width: auto;
   margin-bottom: 0px;
 }
@@ -711,7 +708,7 @@ iframe {
 }
 
 #save-contact{
-  margin-top: 38px;
+  margin-top: 30px;
   width: 178px;
   height: 51px;
   border-radius: 157px;
@@ -728,6 +725,20 @@ iframe {
   font-weight: 600;
 }
 
-#bio{
+#bio, #company{
   margin:0px;
+}
+
+.save{
+  margin: 0px;
+}
+
+section{
+  margin-left: 6%;
+  margin-right: 6%;
+}
+
+#products-section, .contacts-section, .sm-section, .services-section, .certif-section{
+  padding-left: 10%;
+  padding-right: 10%;
 }

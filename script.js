@@ -230,7 +230,7 @@ const contactsData = [
   },
 ];
 
-let contactVisible = false;
+let contactVisible = true;
 
 if (!contactVisible || contactsData.length === 0) {
   document.getElementsByClassName("contacts-section")[0].style.display = "none";
@@ -375,7 +375,7 @@ const products = [
   },
 ];
 
-let productVisibility = false;
+let productVisibility = true;
 
 if (!productVisibility||products.length == 0) {
   document.getElementsByClassName("products-section")[0].style.display = "none";
@@ -444,7 +444,7 @@ const bankDetails = {
   vatNumber: "123456789",
 };
 
-let bankVisibility = false;
+let bankVisibility = true;
 
 if (!bankVisibility || Object.values(bankDetails).every((val) => val === "")) {
   document.getElementsByClassName("bank-section")[0].style.display = "none";
@@ -512,7 +512,7 @@ const awardsData = [
   },
 ];
 
-let awardVisibility = false;
+let awardVisibility = true;
 
 // main code
 
@@ -551,7 +551,7 @@ const certif = [
   { title: "Service 1", awardName: "Award 1", awardAuthority: "Authority 1" },
 ];
 
-let certifVisibility = false;
+let certifVisibility = true;
 
 // main code
 
