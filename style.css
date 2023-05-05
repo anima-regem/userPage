@@ -494,19 +494,6 @@ iframe {
   border-radius: 0px 0px 24px 24px;
 }
 
-.image-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: inherit;
-  /* 50% opacity black */
-  z-index: 1;
-  /* make sure the overlay is below the div content */
-}
 
 .button-overlay {
   position: absolute;
@@ -555,31 +542,7 @@ iframe {
 
 }
 
-.glassy-strip {
-  /* position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50px; */
-  /* background: rgba(255, 255, 255, 0.14); */
-  /* backdrop-filter: blur(6.5px); */
-  /* display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  z-index: 1;
-  border-radius: 0px 0px 24px 24px; */
-}
 
-.glassy-strip h2 {
-  position: relative;
-  font-size: 1.5rem;
-  color: #fff;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  margin: 0;
-  padding: 0;
-  align-self: center;
-  margin-left: 40vw;
-}
 
 .discription {
   height: fit-content;
@@ -766,9 +729,9 @@ section{
 }
 
 #btn_hi{
-  margin-top: 30px;
-  width: 178px;
-  height: 51px;
+  width: 95%;
+  height: max-content;
+  padding:  5% 0px;
   border-radius: 157px;
   border: none;
   display: flex;
@@ -779,4 +742,27 @@ section{
 }
 #btn_hi > img{
   margin-right: 10px;
+}
+
+.btm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5% 10%;
+}
+
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: var(--linkBg);
+  padding: 3% 10%;
+
+}
+.footer > span{
+  padding-right: 0.8rem;
+  font-size: 0.8rem;
+  color: #878787;
 }
