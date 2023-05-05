@@ -1,5 +1,9 @@
+const altBtn = document.getElementById("btn_hi");
+altBtn.style.display = "none";
+
 const darkBtn = document.getElementById("butnDrk");
 const lightBtn = document.getElementById("butnLgt");
+
 
 window.addEventListener("load", () => darkMode());
 
@@ -293,6 +297,10 @@ function createButton(type, value) {
     button.appendChild(imgWrapper.firstChild);
 
     button.onclick = () => window.open(`https://wa.me/${value}`);
+
+
+    altBtn.onclick = () => window.open(`https://wa.me/${value}`);
+    altBtn.style.display = "block";
   }
 
   button.appendChild(icon);
@@ -727,3 +735,4 @@ saveContactBtn.addEventListener("click", () => {
 const formEmail = "";
 const formSubmit = document.querySelector("form");
 formSubmit.setAttribute("action", `mailto:${formEmail}`);
+

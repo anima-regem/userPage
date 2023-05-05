@@ -13,7 +13,7 @@ h3 {
   --lightAc: #828282;
   --bodyContent: #4f4f4f;
   --subData: #4f4f4f;
-  --linkBg: #E0E0E0;
+  --linkBg: #F2F2F2;
   --subText: #333333;
   --border: #c5c5c5;
 
@@ -29,6 +29,8 @@ h3 {
 
   --frameCardButton:#fff;
 
+  --awdBor: #ffffff;
+  --awdBg: #F2F2F2;
   
 }
 :root.dark {
@@ -52,6 +54,8 @@ h3 {
 
   --frameCardButton:#000;
 
+  --awdBor: #F2F2F2;
+  --awdBg: #000;
 }
 
 body {
@@ -77,6 +81,8 @@ body {
   font-weight: 600;
   color: var(--subText);
   line-height: 40px;
+  margin-top: 6%;
+  margin-bottom: 3%;
 }
 
 /* .button-overlay{
@@ -96,7 +102,7 @@ body {
 }
 
 .award_card{
-  border: 0.6px solid #333333;
+  border: 0.6px solid var(--awdBor);
   padding: 3% 8%;
   border-radius: 16px;
   display: flex;
@@ -105,6 +111,7 @@ body {
   align-items: center;
   min-width: 100px;
   margin: 2%;
+  background-color: var(--awdBg);
 }
 .award_card > h3{
   color: var(--bodyContent);
@@ -150,7 +157,7 @@ input {
   border: none;
 }
 
-input[type="submit"] {
+input[type="submit"], #btn_hi {
   background-color: #beff6c;
   color: #000;
 }
@@ -379,7 +386,7 @@ input[name="subject"]::placeholder {
   color: var(--subText);
 }
 
-.submit_btn {
+.submit_btn, #btn_hi {
   width: 80%;
 }
 
@@ -429,6 +436,7 @@ iframe {
   background-color: var(--linkBg);
   color: var(--darkAc);
   width: 100%;
+  max-height: 58px;
   margin: 3% 10% 3% 10%;
   border-radius: 12px;
 }
@@ -441,9 +449,9 @@ iframe {
 
 .image {
   background-color: #beff6c;
-  margin: 5px;
-  width: 57px;
-  height: 58px;
+  margin: 3px;
+  width: 50px;
+  height: 50px;
   border-radius: 12px;
   border: none;
 }
@@ -755,4 +763,20 @@ section{
 
 #save-contact:hover{
   cursor: pointer;
+}
+
+#btn_hi{
+  margin-top: 30px;
+  width: 178px;
+  height: 51px;
+  border-radius: 157px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--btnBg);
+  color: var(--frameCardButton);
+}
+#btn_hi > img{
+  margin-right: 10px;
 }
