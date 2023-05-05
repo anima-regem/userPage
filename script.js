@@ -19,7 +19,7 @@ const lightMode = () => {
 const model_container = document.querySelector(".model_container");
 const model = document.querySelector("#model");
 
-function toggleModel(name, link, copy = false) {
+function toggleModel(name, link) {
   model.innerHTML = "";
   console.log("length", link.length);
   const h1 = document.createElement("h1");
@@ -29,7 +29,7 @@ function toggleModel(name, link, copy = false) {
   model.appendChild(h1);
   console.log(link);
   link.forEach((item) => {
-    var datacard = inputCard(item, (copy = true));
+    var datacard = inputCard(item);
     model.appendChild(datacard);
     console.log(datacard);
   });
@@ -40,7 +40,7 @@ function hideModel() {
   model_container.classList.remove("show");
 }
 
-function inputCard(data, copy = false) {
+function inputCard(data) {
   // Create a div element
   const div = document.createElement("div");
   div.classList.add("input_section");
@@ -54,39 +54,16 @@ function inputCard(data, copy = false) {
   input.name = "";
   input.id = "";
 
-  div.appendChild(input);
-  if (copy) {
-    const i = document.createElement("i");
-    i.addEventListener("click", () => {
-      copyToClipboard(data);
-    });
-    i.classList.add("fa", "fa-copy");
-    div.appendChild(i);
-  }
   // Create an i element
+  // const i = document.createElement("i");
+  // i.classList.add("fa", "fa-copy");
 
   // Append input and i elements to the div element
+  div.appendChild(input);
+  // div.appendChild(i);
 
   // Return the div element as an HTML string
   return div;
-}
-
-function copyToClipboard(text) {
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text);
-    return; //codes below wont be executed
-  }
-  const textArea = document.createElement("textarea");
-  textArea.value = text;
-
-  document.body.appendChild(textArea);
-
-  textArea.focus();
-  textArea.select();
-
-  document.execCommand("copy");
-
-  document.body.removeChild(textArea);
 }
 
 const personData = {
@@ -199,7 +176,7 @@ for (const social of socialMedia.socials) {
     }
     socialMediaHTML += `
       <a href="https://${social.value}" class="image sm-icons">
-        <i class="${iconClass}" style="color: #7c56fe;"></i>
+        <i class="${iconClass}"></i>
       </a>
     `;
   }
@@ -289,7 +266,6 @@ function createButton(type, value) {
     button.appendChild(img);
     button.onclick = () => window.open(`https://wa.me/${value}`);
   }
-  icon.style.color = "#7c56fe";
 
   button.appendChild(icon);
 
@@ -334,15 +310,15 @@ if (linksData.length > 0) {
 
 // define an array of services
 const services = [
-  { title: "Service 1", link: "https://example.com/service1" },
-  { title: "NFC", link: "https://example.com/service2" },
-  { title: "Service Business", link: "https://example.com/service1" },
-  { title: "NFC", link: "https://example.com/service1" },
-  { title: "Service 1", link: "https://example.com/service1" },
-  { title: "Service 1", link: "https://example.com/service1" },
-  { title: "Service 1", link: "https://example.com/service1" },
-  { title: "NFC", link: "https://example.com/service1" },
-  { title: "Service Business", link: "https://example.com/service1" },
+  { title: "Service 1" },
+  { title: "NFC" },
+  { title: "Service Business" },
+  { title: "NFC" },
+  { title: "Service 1" },
+  { title: "Service 1" },
+  { title: "Service 1" },
+  { title: "NFC" },
+  { title: "Service Business" },
 ];
 
 let serviceStatus = true;
@@ -363,11 +339,6 @@ services.forEach((service) => {
   titleElem.textContent = service.title;
   serviceElem.appendChild(titleElem);
   servicesIcons.appendChild(serviceElem);
-  serviceElem.addEventListener("click", () => {
-    if (service.link) {
-      window.open(service.link, "_blank");
-    }
-  });
 });
 
 // get the video container and iframe element
@@ -375,11 +346,9 @@ const videoContainer = document.querySelector(".embedding .video");
 const videoFrame = videoContainer.querySelector("iframe");
 
 let ytStatus = true;
-const ytLink = "https://www.youtube.com/watch?v=tmGDx9hVWwo";
-const ytEmbed = `https://www.youtube.com/embed/${ytLink.split("v=")[1]}`;
 
 // set the YouTube video URL
-const youtubeUrl = ytStatus ? ytEmbed : "";
+const youtubeUrl = ytStatus ? "https://www.youtube.com/embed/N5wpD9Ov_To" : "";
 videoFrame.style.display = ytStatus ? "block" : "none";
 
 // set the src attribute of the iframe element
@@ -392,16 +361,14 @@ const products = [
   {
     image: "path/to/image1.jpg",
     title: "Smart Business Card",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
+    subtitle: "INR 2000",
+    buttonLabel: "Frame 101",
   },
   {
     image: "path/to/image2.jpg",
     title: "Smart Business Card",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
+    subtitle: "INR 2000",
+    buttonLabel: "Frame 101",
   },
 ];
 
@@ -443,19 +410,14 @@ products.forEach((product) => {
   cardContentElem.appendChild(cardTitleElem);
 
   const cardSubtitleElem = document.createElement("p");
-  cardSubtitleElem.classList.add("card-subtitle", "striked-price");
-  cardSubtitleElem.textContent = product.oldPrice;
+  cardSubtitleElem.classList.add("card-subtitle");
+  cardSubtitleElem.textContent = product.subtitle;
   cardContentElem.appendChild(cardSubtitleElem);
 
   const cardButtonElem = document.createElement("button");
   cardButtonElem.classList.add("card-button");
-  cardButtonElem.textContent = product.newPrice;
+  cardButtonElem.textContent = product.buttonLabel;
   cardContentElem.appendChild(cardButtonElem);
-  cardButtonElem.addEventListener("click", (e) => {
-    if (product.link) {
-      window.open(product.link, "_blank");
-    }
-  });
 
   productsIcons.appendChild(cardElem);
 });
@@ -470,13 +432,23 @@ productsSection.appendChild(productsIcons);
 
 const bankDetails = {
   name: "Adolph Blaine Charles David",
-  accountNumber: "88888888888888889999999",
+  accountNumber: "123456789",
   bankName: "Bank of America",
   branch: "New York",
   ifscCode: "123456789",
   swiftCode: "xxxxxxxxxxx",
   vatNumber: "123456789",
 };
+
+// const bankDetails = {
+//   name: "",
+//   accountNumber: "",
+//   bankName: "",
+//   branch: "",
+//   ifscCode: "",
+//   swiftCode: "",
+//   vatNumber: "",
+// };
 
 let bankVisibility = false;
 
@@ -589,20 +561,6 @@ function renderBankDetails() {
 
   // Set the bank details container HTML to the dynamically generated HTML
   bankDetailsContainer.innerHTML = bankDetailsHTML;
-  const bankArr = document.getElementsByClassName("bank-col");
-  console.log(bankArr);
-  for (let i = 0; i < bankArr.length; i++) {
-    if (bankArr[i].children.length === 0) {
-      bankArr[i].style.display = "none";
-    }
-    bankArr[i].addEventListener("click", () => {
-      const colName = bankArr[i].children[0].innerHTML;
-      let colValue = bankArr[i].children[1].innerHTML;
-      // remove the <br> tag from the colValue
-      colValue = colValue.replace("<br>", "");
-      toggleModel(colName, [colValue], (copy = true));
-    });
-  }
 }
 
 // Call the renderBankDetails function to render the bank details
@@ -678,11 +636,7 @@ function createAwardCard(award) {
 
 // define an array of services
 const certif = [
-  {
-    title: "Service 1",
-    awardName: "Award 1",
-    awardAuthority: "Authority 1",
-  },
+  { title: "Service 1", awardName: "Award 1", awardAuthority: "Authority 1" },
 ];
 
 let certifVisibility = true;

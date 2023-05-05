@@ -8,13 +8,6 @@ h3 {
   padding: 0;
 }
 :root.light {
-  /* --fg: #fff;
-  --darkAc: #333;
-  --bodyContentDark: #bdbdbd;
-  --subDataDark: #4f4f4f;
-  --linkBgDark: #333333;
-  --subTextDark: #ffffff; */
-
   --bg: #fff;
   --fg:#000;
   --lightAc: #828282;
@@ -31,19 +24,14 @@ h3 {
 
   --bankBorder: #000000;
 
-  --btnBg: #BEFF6C;
-  --btnTxt: #7C56FE;
+  --btnBg: #7C56FE;
+  --btnTxt: #BEFF6C;
+
+  --frameCardButton:#fff;
 
   
 }
 :root.dark {
-  /* --fg: #fff;
-  --darkAc: #333;
-  --bodyContentDark: #BDBDBD;
-  --subDataDark: rgba(255, 255, 255, 0.4);
-  --linkBgDark: #333333;
-  --subTextDark: #FFFFFF; */
-
   --fg:#fff;
   --bg: #000;
   --lightAc: #828282;
@@ -59,8 +47,11 @@ h3 {
 
   --bankBorder: #c5c5c5;
 
-  --btnBg: #1C1C1E;
-  --btnTxt: #BEFF6C;
+  --btnBg: #BEFF6C;
+  --btnTxt: #7C56FE;
+
+  --frameCardButton:#000;
+
 }
 
 body {
@@ -291,14 +282,14 @@ input[name="subject"]::placeholder {
 }
 
 .card-button {
-  background-color: #beff6c;
+  background-color: var(--btnBg);
   border-radius: 10px;
   width: 95%;
   height: 37px;
   margin-top: 8px;
   border-width: 1px;
   border: none;
-  color: #333333;
+  color: var(--frameCardButton);
   font-size: 14px;
   font-weight: bold;
   text-align: center;
@@ -450,9 +441,14 @@ iframe {
   border: none;
 }
 
-.image i {
-  transform: scale(1.8);
+.image{
+  background-color: var(--btnBg);
 }
+.image i,.btnBg {
+  transform: scale(1.8);
+  color: var(--btnTxt);
+}
+
 
 .contacts-icons,
 .sm-icons {
@@ -464,7 +460,6 @@ iframe {
   column-gap: 25px;
   flex-wrap: wrap;
   text-decoration: none;
-
 }
 
 .discription {
@@ -529,7 +524,7 @@ iframe {
 
 .profile-image-overlay {
   position: absolute;
-  bottom: -5vh;
+  bottom: -8vh;
   left: 6vw;
   z-index: 3;
   width: 133px;
@@ -546,18 +541,18 @@ iframe {
 }
 
 .glassy-strip {
-  position: absolute;
+  /* position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(6.5px);
-  display: flex;
+  height: 50px; */
+  /* background: rgba(255, 255, 255, 0.14); */
+  /* backdrop-filter: blur(6.5px); */
+  /* display: flex;
   justify-content: flex-start;
   align-items: center;
   z-index: 1;
-  border-radius: 0px 0px 24px 24px;
+  border-radius: 0px 0px 24px 24px; */
 }
 
 .glassy-strip h2 {
