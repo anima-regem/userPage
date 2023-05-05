@@ -111,7 +111,6 @@ const position = document.getElementById("position");
 const company = document.getElementById("company");
 const bio = document.getElementById("bio");
 
-
 // ----
 // Check if social media data is available
 
@@ -120,37 +119,37 @@ const socialMedia = {
   socials: [
     {
       _id: {
-        $oid: "643d798412ca41ecc1784a3a"
+        $oid: "643d798412ca41ecc1784a3a",
       },
       label: "Instagram ID",
       value: "devniyaz",
-      type: "instagram"
+      type: "instagram",
     },
     {
       _id: {
-        $oid: "643d798412ca41ecc1784a3b"
+        $oid: "643d798412ca41ecc1784a3b",
       },
       label: "Linkedin Profile",
       value: "linkedin.com/in/devniyaz",
-      type: "linkedin"
+      type: "linkedin",
     },
     {
       _id: {
-        $oid: "643d798412ca41ecc1784a3c"
+        $oid: "643d798412ca41ecc1784a3c",
       },
       label: "Twitter",
       value: "devniyaz",
-      type: "twitter"
+      type: "twitter",
     },
     {
       _id: {
-        $oid: "643db1f57f14d8b41f43923e"
+        $oid: "643db1f57f14d8b41f43923e",
       },
       label: "Github",
       value: "github.com/devniyaz",
-      type: "other"
-    }
-  ]
+      type: "other",
+    },
+  ],
 };
 
 // Create an empty HTML string
@@ -185,7 +184,8 @@ for (const social of socialMedia.socials) {
 
 // Render the social media section
 const socialMediaSection = document.getElementById("social-media-section");
-socialMediaSection.innerHTML = socialMedia.status?`
+socialMediaSection.innerHTML = socialMedia.status
+  ? `
   <div class="sm-section section">
     <h3 class="sm-head head">Social Media</h3>
     <hr />
@@ -193,10 +193,8 @@ socialMediaSection.innerHTML = socialMedia.status?`
       ${socialMediaHTML}
     </div>
   </div>
-`:'';
-
-
-
+`
+  : "";
 
 // // ---
 
@@ -279,7 +277,7 @@ function createButton(type, value) {
 
 // example data, replace with your own
 const linksData = [
-    { name: "Link 1", url: "https://example.com/link1" },
+  { name: "Link 1", url: "https://example.com/link1" },
   //   { name: "Link 2", url: "https://example.com/link2" },
   //   { name: "Link 3", url: "https://example.com/link3" },
 ];
@@ -351,8 +349,8 @@ const videoFrame = videoContainer.querySelector("iframe");
 let ytStatus = true;
 
 // set the YouTube video URL
-const youtubeUrl = ytStatus?"https://www.youtube.com/embed/N5wpD9Ov_To":"";
-videoFrame.style.display= ytStatus?"block":"none";
+const youtubeUrl = ytStatus ? "https://www.youtube.com/embed/N5wpD9Ov_To" : "";
+videoFrame.style.display = ytStatus ? "block" : "none";
 
 // set the src attribute of the iframe element
 videoFrame.setAttribute("src", youtubeUrl);
@@ -377,7 +375,7 @@ const products = [
 
 let productVisibility = true;
 
-if (!productVisibility||products.length == 0) {
+if (!productVisibility || products.length == 0) {
   document.getElementsByClassName("products-section")[0].style.display = "none";
 }
 
@@ -430,12 +428,11 @@ productsSection.appendChild(productsHead);
 productsSection.appendChild(document.createElement("hr"));
 productsSection.appendChild(productsIcons);
 
-
 // -------
-
 // Define the bank details data as an object
+
 const bankDetails = {
-  name: "Jane Doe",
+  name: "Adolph Blaine Charles David",
   accountNumber: "123456789",
   bankName: "Bank of America",
   branch: "New York",
@@ -444,14 +441,46 @@ const bankDetails = {
   vatNumber: "123456789",
 };
 
-let bankVisibility = true;
+// const bankDetails = {
+//   name: "",
+//   accountNumber: "",
+//   bankName: "",
+//   branch: "",
+//   ifscCode: "",
+//   swiftCode: "",
+//   vatNumber: "",
+// };
 
-if (!bankVisibility || Object.values(bankDetails).every((val) => val === "")) {
+let bankVisibility = false;
+
+console.log(document.getElementsByClassName("bank-section")[0]);
+if (!bankVisibility && Object.values(bankDetails).every((val) => val === "")) {
   document.getElementsByClassName("bank-section")[0].style.display = "none";
 }
 
 // Get the bank details container element
 const bankDetailsContainer = document.getElementById("bank-details");
+
+const isStringEmpty = (str) => {
+  if (str === "") return true;
+  else return false;
+};
+
+const shortName = (name) => {
+  let wrd = name.split(" ");
+  switch (wrd.length) {
+    case 1:
+      return wrd[0];
+    case 2:
+      if (wrd[0].length > 9) {
+        return `${wrd[0]} <br/> ${wrd[1]}`;
+      } else return `${wrd[0]} <br/> ${wrd[1]}`;
+    case 3:
+      return `${wrd[0]} ${wrd[1]} <br/> ${wrd[2]}`;
+    case 4:
+      return `${wrd[0]} ${wrd[1]} <br/> ${wrd[2]} ${wrd[3]}`;
+  }
+};
 
 // Create a function to dynamically render the bank details
 function renderBankDetails() {
@@ -465,10 +494,71 @@ function renderBankDetails() {
 
   // Otherwise, create the bank details HTML dynamically
   let bankDetailsHTML = "";
-  bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Name</p><p class="dtl">${bankDetails.name}</p></div><div class="bank-col"></div></div>`;
-  bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Account Number</p><p class="dtl">${bankDetails.accountNumber}</p></div><div class="bank-col"><p class="dtl-head">Bank Name</p><p class="dtl">${bankDetails.bankName}</p></div></div>`;
-  bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Branch</p><p class="dtl">${bankDetails.branch}</p></div><div class="bank-col"><p class="dtl-head">IFSC Code</p><p class="dtl">${bankDetails.ifscCode}</p></div></div>`;
-  bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Swift Code</p><p class="dtl">${bankDetails.swiftCode}</p></div><div class="bank-col"><p class="dtl-head">VAT Number</p><p class="dtl">${bankDetails.vatNumber}</p></div></div>`;
+  bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Name</p><p class="dtl" style="text-align: left;">${shortName(
+    bankDetails.name
+  )}</p>
+  </div><div class="bank-col"></div></div>`;
+  bankDetailsHTML += `
+  <div class="bank-row">
+  <div class="bank-col">
+    ${
+      !isStringEmpty(bankDetails.accountNumber)
+        ? `<p class="dtl-head">Account Number</p>
+    <p class="dtl">${bankDetails.accountNumber}</p>`
+        : ""
+    }
+
+  </div>
+  <div class="bank-col">
+  ${
+    !isStringEmpty(bankDetails.bankName)
+      ? `<p class="dtl-head">Bank Name</p>
+  <p class="dtl">${bankDetails.bankName}</p>`
+      : ""
+  }
+  </div>
+</div>
+                      `;
+  bankDetailsHTML += `
+  <div class="bank-row">
+  <div class="bank-col">
+  ${
+    !isStringEmpty(bankDetails.branch)
+      ? `<p class="dtl-head">Branch</p>
+  <p class="dtl">${bankDetails.branch}</p>`
+      : ""
+  }
+  </div>
+  <div class="bank-col">
+  ${
+    !isStringEmpty(bankDetails.ifscCode)
+      ? `<p class="dtl-head">IFSC Code</p>
+  <p class="dtl">${bankDetails.ifscCode}</p>`
+      : ""
+  }
+  </div>
+</div>
+  `;
+  bankDetailsHTML += `
+  <div class="bank-row">
+  <div class="bank-col">
+  ${
+    !isStringEmpty(bankDetails.swiftCode)
+      ? `<p class="dtl-head">Swift Code</p>
+  <p class="dtl">${bankDetails.swiftCode}</p>`
+      : ""
+  }
+  </div>
+  <div class="bank-col">
+  ${
+    !isStringEmpty(bankDetails.vatNumber)
+      ? `<p class="dtl-head">VAT Number</p>
+  <p class="dtl">${bankDetails.vatNumber}</p>`
+      : ""
+  }
+  </div>
+</div>
+  `;
 
   // Set the bank details container HTML to the dynamically generated HTML
   bankDetailsContainer.innerHTML = bankDetailsHTML;
@@ -518,8 +608,7 @@ let awardVisibility = true;
 
 if (!awardVisibility || awardsData.length === 0) {
   let e = document.getElementsByClassName("awards_section");
-    document.getElementsByClassName("awards_section")[0].style.display = "none";
-  
+  document.getElementsByClassName("awards_section")[0].style.display = "none";
 }
 
 const awardCardsDiv = document.getElementById("award-cards");
@@ -585,6 +674,6 @@ saveContactBtn.addEventListener("click", () => {
 });
 
 // --------
-const formEmail = ''
-const formSubmit = document.querySelector('form')
-formSubmit.setAttribute("action", `mailto:${formEmail}`)
+const formEmail = "";
+const formSubmit = document.querySelector("form");
+formSubmit.setAttribute("action", `mailto:${formEmail}`);
