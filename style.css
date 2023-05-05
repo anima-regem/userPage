@@ -214,10 +214,12 @@ input[name="subject"]::placeholder {
 }
 
 .dtl {
+  max-width: 160px;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
   color: var(--subText);
+  overflow-x: hidden;
 }
 
 .head {
@@ -505,37 +507,25 @@ iframe {
 
 .button-overlay a {
   display: inline-block;
-  padding: 10px;
+  padding: 8px;
   background-color: #333;
   color: var(--fg);
   text-decoration: none;
   border: 1px solid #beff6c;
   box-shadow: 1px 8px 31px rgba(0, 0, 0, 0.64);
   backdrop-filter: blur(3.5px);
-  border-radius: 14px;
+  border-radius: 25px;
+  position: relative;
 }
 
-.button-overlay a img {
-  width: 18px;
-  height: 18px;
-}
-
-.contents {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 12;
-  color: #beff6c;
-}
-
-.contents p {
+.button-overlay a img{
+  width: 21px;
+  height: 21px;
   padding: 0px;
   margin: 0px;
-  padding-left: 1vw;
 }
+
+
 
 .profile-image-overlay {
   position: absolute;
@@ -741,4 +731,22 @@ section{
 #products-section, .contacts-section, .sm-section, .services-section, .certif-section{
   padding-left: 10%;
   padding-right: 10%;
+}
+
+.striked-price{
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+.striked-price::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  text-decoration: line-through;
+  background-color: red;
+  transform: rotateZ(4deg);
 }
