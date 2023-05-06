@@ -548,8 +548,10 @@ iframe {
   height: fit-content;
   margin-top: -7.5vh;
   margin-bottom: 5vw;
-  margin-left: 40vw;
+  margin-left: 45vw;
   line-height: 1vh;
+  width: 60%;
+
 }
 
 .main-section {
@@ -765,4 +767,47 @@ section{
   padding-right: 0.8rem;
   font-size: 0.8rem;
   color: #878787;
+}
+
+form{
+  display: none;
+}
+
+@media (max-width: 475px){
+  .bank-col {
+    width: 100%;
+    border-radius: 14px;
+  }
+  .dtl{
+    max-width: 100px;
+    float: right;
+    text-align: left;
+  }
+}
+
+
+@media (max-width: 420px){
+
+  
+.profile-image-overlay {
+  width: 80px;
+  height: 80px;
+}
+
+  .discription {
+    /* padding-left: 5vw; */
+    width: 50%;
+  }
+
+  .discription > h2{
+    font-size: 1em;
+    line-height: 1.5em;
+  }
+
+  .discription > p{
+    line-height: 1.2em;
+  }
+  p{
+    font-size: 0.8em;
+  }
 }
