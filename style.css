@@ -806,6 +806,7 @@ form{
 
   .discription > p{
     line-height: 1.2em;
+    margin: 0px;
   }
   p{
     font-size: 0.8em;
