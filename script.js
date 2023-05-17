@@ -483,7 +483,7 @@ productsSection.appendChild(productsIcons);
 
 const bankDetails = {
   name: "Adolph Blaine Charles David",
-  accountNumber: "88888888888888889999999",
+  accountNumber: "88888888888888888888",
   bankName: "Bank of America",
   branch: "New York",
   ifscCode: "123456789",
