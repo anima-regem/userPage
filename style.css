@@ -236,7 +236,7 @@ input[name="subject"]::placeholder {
 .dtl {
   max-width: 160px;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: bold;
   line-height: 21px;
   word-wrap: break-word;
   color: var(--subText);
