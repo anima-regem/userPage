@@ -22,6 +22,9 @@
   </head>
 
   <body>
+    <main>
+
+ 
     <div class="hero">
       <div class="model_container">
         <div onclick="hideModel()" class="demo"></div>
@@ -46,17 +49,19 @@
             </div>
           </a>
         </div>
+      </div>
+      <div class="user-info">
         <div class="profile-image-overlay">
           <img
             src="https://storage.googleapis.com/dev-xcard.appspot.com/profiles/profiles-20230501T021120560Z0599550.jpeg?GoogleAccessId=firebase-adminsdk-xjjal%40dev-xcard.iam.gserviceaccount.com&Expires=4070889000&Signature=aO5uRFy4oVv4nk4G8pyf56ZtL0qA%2FhR3p5N8cgX49j2X4AxlALDXNXLFgEXHAzCAWpmJ7tb%2BOBh472paokyyVbLnWyy3KlST2DVOiu8TJFXLFX9pbO9huq3ODaiaaHC6rMHcSLhCML2bKhryXrZYuzw4pAlglneJ2TEUhxzI2meMjmjQ6KeEesR2PPA4he08E3Gtch2RTbntgHAMY8jJGfhjUysIxQvsRQn8qFWddrWZeI2KCbqOkHg2Gl4aSNvuxeV8VMgpiFWxodOangKmYEeEsMZhQwebE9KUB8Di6Q1t7wmx3ErmSTeHxbEz17z6K70mdiEEiW5gp%2B38EbZBjA%3D%3D"
             alt="Profile Image"
           />
         </div>
-      </div>
-      <div class="discription">
-        <h2 class="user_name" id="name">Name of Personkasfjasfajsfkkasfk</h2>
-        <p class="disc" id="position">Chief Financial Officer</p>
-        <p class="company" id="company">Company name</p>
+        <div class="discription">
+          <h2 class="user_name" id="name">Jane Doe</h2>
+          <p class="disc" id="position">Chief Financial Officer</p>
+          <p class="company" id="company">Company name</p>
+        </div>
       </div>
     </div>
 
@@ -79,16 +84,16 @@
       </p>
     </div>
 
-    <div class="social-media-section section" id="social-media-section">
-      <h3 class="sm-head head">Social Media</h3>
-      <hr />
-      <div class="sm-icons" id="sm-icons"></div>
-    </div>
-
     <div class="contacts-section section">
       <h3 class="contacts-head head">Contacts</h3>
       <hr />
       <div class="contacts-icons" id="contacts-icons"></div>
+    </div>
+
+    <div class="social-media-section section" id="social-media-section">
+      <h3 class="sm-head head">Social Media</h3>
+      <hr />
+      <div class="sm-icons" id="sm-icons"></div>
     </div>
 
     <div class="websites-section section">
@@ -129,8 +134,6 @@
       <div class="bank-icons" id="bank-details"></div>
     </div>
 
-    
-
     <form>
       <div class="enq-section section">
         <h3 class="enq-head head">Enquiry</h3>
@@ -151,18 +154,24 @@
     </form>
 
     <div class="section btm">
-      <button id="btn_hi"> <img src="wp.png" alt="" >
-        Send Hai</button>
+      <button id="btn_hi"><img src="wp.png" alt="" /> Send Hai</button>
     </div>
+    <button id="scrollButton" onclick="scrollToTop()"> <i class="fa-solid fa-arrow-up"></i></button>
+  </main>
 
-    <footer class="footer btm">
-      <span>
-        Powered By
-      </span>
-      <img src="sponsor.png" alt="" >
-
+    <footer class="footer btm" id="footer">
+      <div class="ftr-left">
+        <span class="pwrd"> Powered By </span>
+        <span class="name-brand"> Skybertech </span>
+      </div>
+      <a href="">
+        <div class="ftr-right">
+          <span class="learn-more"> View more </span>
+  
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </a>
     </footer>
-
 
     <script defer src="script.js"></script>
   </body>
