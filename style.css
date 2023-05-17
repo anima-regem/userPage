@@ -277,7 +277,7 @@ input[name="subject"]::placeholder {
   height: 104px;
   background-image: url("image.png");
   background-size: cover;
-  border-bottom: 1px solid var(--lightAc);
+  border-bottom: 1px solid var(--cardBorder);
   border-radius: 14px 14px 0 0;
 }
 
