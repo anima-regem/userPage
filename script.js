@@ -98,10 +98,13 @@ const personData = {
   company: "Company Name",
   position: "Position Name",
   address: "123 Main St, City, State, 12345",
+  websites: ["https://example.com", "https://example.com"],
   phone: "1234567890",
 };
 
 const createVcard = () => {
+  const websites = personData.websites; // Assuming websites is an array of website URLs
+
   const vcardData = [
     "BEGIN:VCARD",
     "VERSION:3.0",
@@ -111,6 +114,8 @@ const createVcard = () => {
     `TITLE:${personData.position}`,
     `ADR;TYPE=WORK:;;${personData.address}`,
     `TEL;TYPE=CELL:${personData.phone}`,
+    ...websites.map((website) => `URL:${website}`), // Dynamically add website URLs
+    `X-SOCIALPROFILE;TYPE=whatsapp:${personData.whatsapp}`,
     "END:VCARD",
   ].join("\n");
 
@@ -183,7 +188,38 @@ const socialMedia = {
       value: "devniyaz",
       type: "facebook",
     },
-
+    {
+      _id: {
+        $oid: "643d798412ca41ecc1784a3c",
+      },
+      label: "Dribbble",
+      value: "devniyaz",
+      type: "dribbble",
+    },
+    {
+      _id: {
+        $oid: "643d798412ca41ecc1784a3c",
+      },
+      label: "Spotify",
+      value: "devniyaz",
+      type: "spotify",
+    },
+    {
+      _id: {
+        $oid: "643d798412ca41ecc1784a3c",
+      },
+      label: "Behance",
+      value: "devniyaz",
+      type: "behance",
+    },
+    {
+      _id: {
+        $oid: "643d798412ca41ecc1784a3c",
+      },
+      label: "Medium",
+      value: "devniyaz",
+      type: "medium",
+    },
   ],
 };
 
@@ -209,6 +245,18 @@ for (const social of socialMedia.socials) {
       case "facebook":
         iconClass = "fa-brands fa-facebook";
         break;
+      // case "dribbble":
+      //   iconClass = "fa-brands fa-dribbble";
+      //   break;
+      // case "spotify":
+      //   iconClass = "fa-brands fa-spotify";
+      //   break;
+      // case "medium":
+      //   iconClass = "fa-brands fa-medium-m";
+      //   break;
+      // case "behance":
+      //   iconClass = "fa-brands fa-behance";
+      //   break;
       default:
         iconClass = "fa-solid fa-link";
     }
@@ -426,6 +474,41 @@ const products = [
     newPrice: "Frame 101",
     link: "https://google.com",
   },
+  {
+    image: "path/to/image2.jpg",
+    title: "Smart Business Card Card",
+    oldPrice: "INR 2000",
+    newPrice: "Frame 101",
+    link: "https://google.com",
+  },
+  {
+    image: "path/to/image2.jpg",
+    title: "Smart Business ",
+    oldPrice: "INR 2000",
+    newPrice: "Frame 101",
+    link: "https://google.com",
+  },
+  {
+    image: "path/to/image2.jpg",
+    title: "Smart  Card",
+    oldPrice: "INR 2000",
+    newPrice: "Frame 101",
+    link: "https://google.com",
+  },
+  {
+    image: "path/to/image2.jpg",
+    title: " Business Card",
+    oldPrice: "INR 2000",
+    newPrice: "Frame 101",
+    link: "https://google.com",
+  },
+  {
+    image: "path/to/image2.jpg",
+    title: "Smart ",
+    oldPrice: "INR 2000",
+    newPrice: "Frame 101",
+    link: "https://google.com",
+  },
 ];
 
 let productVisibility = true;
@@ -492,7 +575,7 @@ productsSection.appendChild(productsIcons);
 // Define the bank details data as an object
 
 const bankDetails = {
-  name: "Adolph Blaine Charles David",
+  name: "Adolph Blaine Charles David Diengo Andreas",
   accountNumber: "88888888888888888888",
   bankName: "Bank of America",
   branch: "New York",
@@ -516,22 +599,6 @@ const isStringEmpty = (str) => {
   else return false;
 };
 
-const shortName = (name) => {
-  let wrd = name.split(" ");
-  switch (wrd.length) {
-    case 1:
-      return wrd[0];
-    case 2:
-      if (wrd[0].length > 9) {
-        return `${wrd[0]} <br/> ${wrd[1]}`;
-      } else return `${wrd[0]} <br/> ${wrd[1]}`;
-    case 3:
-      return `${wrd[0]} ${wrd[1]} <br/> ${wrd[2]}`;
-    case 4:
-      return `${wrd[0]} ${wrd[1]} <br/> ${wrd[2]} ${wrd[3]}`;
-  }
-};
-
 // Create a function to dynamically render the bank details
 function renderBankDetails() {
   // Check if all bank details are empty
@@ -544,10 +611,8 @@ function renderBankDetails() {
 
   // Otherwise, create the bank details HTML dynamically
   let bankDetailsHTML = "";
-  bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Name</p><p class="dtl" style="text-align: left;">${shortName(
-    bankDetails.name
-  )}</p>
-  </div><div class="bank-col"></div></div>`;
+  bankDetailsHTML += `<div class="bank-row"><div class="bank-col"><p class="dtl-head">Name</p><p class="dtl bank-name" style="text-align: left;">${bankDetails.name}</p>
+  </div></div>`;
   bankDetailsHTML += `
   <div class="bank-row">
   <div class="bank-col">
@@ -653,8 +718,8 @@ if (email) {
 
 const awardsData = [
   {
-    name: "Award 1",
-    authority: "Authority 1",
+    name: "Award 1 Fordisjafk askdjfhalks asdlkjf",
+    authority: "Authority 1msdafsadfjkasdfk asdfhakjsdf asdhf",
   },
   {
     name: "Award 2",
@@ -746,34 +811,32 @@ const formEmail = "";
 const formSubmit = document.querySelector("form");
 formSubmit.setAttribute("action", `mailto:${formEmail}`);
 
-
 // Function to scroll to the top of the page
 function scrollToTop() {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 }
 
 function handleScroll() {
-  var scrollButton = document.getElementById('scrollButton');
-  var footer = document.getElementById('footer');
+  var scrollButton = document.getElementById("scrollButton");
+  var footer = document.getElementById("footer");
   var footerOffset = footer.offsetTop;
   var scrollButtonPosition = window.pageYOffset + window.innerHeight;
 
   if (scrollButtonPosition > footerOffset) {
-    scrollButton.style.bottom = scrollButtonPosition - footerOffset + 16  + 'px';
+    scrollButton.style.bottom = scrollButtonPosition - footerOffset + 16 + "px";
   } else {
-    scrollButton.style.bottom = '16px';
+    scrollButton.style.bottom = "16px";
   }
 
   if (window.pageYOffset > 200) {
-    scrollButton.style.display = 'block';
+    scrollButton.style.display = "block";
   } else {
-    scrollButton.style.display = 'none';
+    scrollButton.style.display = "none";
   }
 }
 
-
 // Attach the scroll event listener to the window
-window.addEventListener('scroll', handleScroll);
+window.addEventListener("scroll", handleScroll);

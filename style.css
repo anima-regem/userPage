@@ -119,11 +119,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 100px;
   margin: 2%;
   background-color: var(--awdBg);
   width: 167px;
-  height: 64px;
+  min-height: 64px;
 }
 .award_card > h3 {
   color: var(--bodyContent);
@@ -240,7 +239,7 @@ input[name="subject"]::placeholder {
   line-height: 21px;
   word-wrap: break-word;
   color: var(--subText);
-  /* overflow-x: hidden; */
+
 }
 
 .head {
@@ -260,15 +259,13 @@ input[name="subject"]::placeholder {
 .card {
   box-sizing: border-box;
   width: 100%;
-  max-width: 167px;
+  max-width: 135px;
   height: 200px;
   border: 1px solid var(--cardBorder);
   background-color: var(--bg);
   border-radius: 14px;
   position: relative;
   margin: 2%;
-  /* padding: 2px; */
-  /* padding: 2px 0 10px 0; */
 }
 
 .card-image {
@@ -339,6 +336,7 @@ input[name="subject"]::placeholder {
   justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
+  flex-wrap: wrap;
   margin: 0px;
   width: 100%;
 }
@@ -584,7 +582,7 @@ iframe {
 }
 
 .details {
-  color: var();
+  overflow-wrap: break-word;
 }
 
 .model_container {
@@ -869,4 +867,8 @@ form {
 
 main{
   position: relative;
+}
+
+.bank-name{
+  max-width: 100%;
 }
