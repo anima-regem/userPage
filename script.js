@@ -98,9 +98,11 @@ const personData = {
   company: "Company Name",
   position: "Position Name",
   address: "123 Main St, City, State, 12345",
-  websites: ["https://example.com", "https://example.com"],
+  websites: ["https://example.com", "https://example2.com"],
   phone: "1234567890",
 };
+
+personData.websites = [`${window.location.href}`, ...personData.websites]
 
 const createVcard = () => {
   const websites = personData.websites; // Assuming websites is an array of website URLs
@@ -306,11 +308,11 @@ const contactsData = [
   },
   {
     type: "Whatsapp",
-    value: "1234672362",
+    value: "918129937097",
   },
   {
     type: "Whatsapp Business",
-    value: "1234672362",
+    value: "918129937097",
   },
 ];
 
@@ -357,7 +359,7 @@ function createButton(type, value) {
 
     button.onclick = () => window.open(`https://wa.me/${value}`);
 
-    altBtn.onclick = () => window.open(`https://wa.me/${value}`);
+    altBtn.onclick = () => window.open(`https://wa.me/${value}?text=Hello`);
     altBtn.style.display = "block";
   }
 
@@ -718,7 +720,7 @@ if (email) {
 
 const awardsData = [
   {
-    name: "Award 1 Fordisjafk askdjfhalks asdlkjf",
+    name: "Best IT Consultant - 2023",
     authority: "Authority 1msdafsadfjkasdfk asdfhakjsdf asdhf",
   },
   {

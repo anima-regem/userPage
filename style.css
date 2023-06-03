@@ -121,7 +121,7 @@ body {
   align-items: center;
   margin: 2%;
   background-color: var(--awdBg);
-  width: 167px;
+  width: 240px; /* Change here */
   min-height: 64px;
 }
 .award_card > h3 {
@@ -568,6 +568,7 @@ iframe {
   height: fit-content;
   line-height: 1vh;
   width: 60%;
+  text-align: justify;
 }
 
 .main-section {
@@ -871,4 +872,11 @@ main{
 
 .bank-name{
   max-width: 100%;
+}
+@media (min-width:426px) {
+  .award_card{
+    width: 280px;
+    padding: 3% 6%;
+
+  }
 }
