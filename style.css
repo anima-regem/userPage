@@ -17,15 +17,18 @@ h3 {
   --subText: #333333;
   --border: #c5c5c5;
 
-
   --modelWrap: #fff;
   --modelInp: #bdbdbd82;
   --modelTxt: #7c56fe;
   --modelMainerp: #05050571;
 
-  --scrollBorder: #4F4F4F;
+  --scrollBorder: #4f4f4f;
   --scrollIcon: #fff;
-  --scrollBg: linear-gradient(138.61deg, #686868 -7.97%, rgba(157, 157, 157, 0) 122.9%);
+  --scrollBg: linear-gradient(
+    138.61deg,
+    #686868 -7.97%,
+    rgba(157, 157, 157, 0) 122.9%
+  );
 
   --cardBorder: #33333314;
 
@@ -55,8 +58,11 @@ h3 {
 
   --scorollBorder: #ffffff;
   --scrollIcon: #333;
-  --scrollBg: linear-gradient(138.61deg, #FFFFFF -7.97%, rgba(255, 255, 255, 0) 122.9%);
-
+  --scrollBg: linear-gradient(
+    138.61deg,
+    #ffffff -7.97%,
+    rgba(255, 255, 255, 0) 122.9%
+  );
 
   --cardBorder: #333333;
 
@@ -239,7 +245,6 @@ input[name="subject"]::placeholder {
   line-height: 21px;
   word-wrap: break-word;
   color: var(--subText);
-
 }
 
 .head {
@@ -297,9 +302,8 @@ input[name="subject"]::placeholder {
   margin: 0;
 }
 
-
 .card-button {
-  background-color: #7C56FE;
+  background-color: #7c56fe;
   border-radius: 10px;
   width: 95%;
   height: 37px;
@@ -528,13 +532,13 @@ iframe {
 }
 
 .profile-image-overlay {
-  position:static;
+  position: static;
   top: -10vh;
   z-index: 3;
   width: 133px;
   height: 133px;
-  border: 2px solid #FFFFFF;
-  border-radius: 32px;  
+  border: 2px solid #ffffff;
+  border-radius: 32px;
   overflow: hidden;
 }
 
@@ -543,7 +547,7 @@ iframe {
   width: 100%;
 }
 
-.user-info{
+.user-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -551,8 +555,6 @@ iframe {
   text-align: center;
   position: relative;
   margin-top: -17.5vh;
-
-
 }
 
 .discription {
@@ -577,10 +579,20 @@ iframe {
   overflow-wrap: break-word;
 }
 
-.model_container {
+.model_container,
+.popup__container {
   display: none;
   opacity: 0;
   transition: 0.5s;
+}
+.popup__container {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
 }
 .model {
   width: 90%;
@@ -598,7 +610,6 @@ iframe {
 .demo {
   flex: 1;
   width: 100%;
-  height: 200px;
 }
 .model > h1 {
   font-family: "Poppins";
@@ -640,7 +651,20 @@ iframe {
 .input_section > input:focus {
   outline: none;
 }
-
+.show_popup {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  background-color: none;
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0000007c;
+  opacity: 1;
+}
 .show {
   display: block;
   width: 100%;
@@ -774,23 +798,22 @@ section {
   padding: 3% 5%;
 }
 
-
 .pwrd {
   font-size: 0.8rem;
   color: #878787;
 }
 
-.learn-more{
+.learn-more {
   font-size: 0.8rem;
   color: #beff6c;
 }
 
-.ftr-right > i{
+.ftr-right > i {
   font-size: 0.8rem;
   color: #beff6c;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -811,7 +834,6 @@ form {
 }
 
 @media (max-width: 420px) {
-
   .discription {
     width: 50%;
   }
@@ -834,7 +856,6 @@ form {
   line-height: 1.3em;
 }
 
-
 #scrollButton {
   display: none;
   position: fixed;
@@ -848,23 +869,21 @@ form {
   backdrop-filter: blur(2px);
   border-color: var(--scrollBorder);
 }
-#scrollButton>i{
+#scrollButton > i {
   color: var(--scrollIcon);
   font-size: 1.8em;
-
 }
 
-main{
+main {
   position: relative;
 }
 
-.bank-name{
+.bank-name {
   max-width: 100%;
 }
-@media (min-width:426px) {
-  .award_card{
+@media (min-width: 426px) {
+  .award_card {
     width: 280px;
     padding: 3% 6%;
-
   }
 }
