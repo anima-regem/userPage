@@ -924,9 +924,9 @@ window.addEventListener("scroll", handleScroll);
 // Products Popup
 
 function openPopup(image, title, description, link) {
-  var popup = document.getElementById("popup");
-  popup.style.display = "block";
-  popup.classList.add("show");
+  var popup = document.querySelector(".popup__container");
+  // popup.style.display = "block";
+  popup.classList.add("show_popup");
 
   // Set the content of the popup dynamically
   var popupImage = document.getElementById("popupImage");
@@ -945,7 +945,6 @@ function openPopup(image, title, description, link) {
 }
 
 function closePopup() {
-  var popup = document.getElementById("popup__container");
-  popup.style.display = "none";
-  popup.classList.remove("show");
+  var popup = document.querySelector(".popup__container");
+  popup.classList.remove("show_popup");
 }
