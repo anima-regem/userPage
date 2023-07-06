@@ -405,9 +405,8 @@ input[name="subject"]::placeholder {
   align-items: center;
   flex-direction: column;
   color: var(--lightAc);
-  width: 85%;
+  width: 100%;
   height: auto;
-  margin: 6%;
   min-height: 171px;
 }
 
@@ -425,6 +424,7 @@ iframe {
   width: 100%;
   min-height: 171px;
   height: auto;
+  margin-bottom: 5vh;
 }
 
 .websites-icons {
@@ -886,4 +886,79 @@ main {
     width: 280px;
     padding: 3% 6%;
   }
+}
+
+.popup {
+  max-width: 400px;
+  margin: 7%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--bg);
+  color: var(--fg);
+  border-radius: 14px;
+  margin-top: 0px;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 0.25rem;
+}
+#popupImage {
+  width: 100%;
+  height: min();
+  margin: 0px;
+  top: 0px;
+}
+
+#popupTitle {
+  color: var(--fg);
+  text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-family: "Poppins";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  align-self: flex-start;
+  margin: 0.8rem;
+}
+
+#popupDescription {
+  color: var(--fg);
+  font-family: "Poppins";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: flex-start;
+  margin: 0.8rem;
+}
+
+.price {
+  align-self: flex-start;
+  margin: 1rem;
+  margin-top: 0px;
+}
+
+#oldPrice {
+  color: var(--gray-3, #828282);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#newPrice {
+  background-color: var(--linkBg);
+  padding: 0.25rem 0.75rem;
+  margin-left: 0.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  font-style: normal;
+}
+
+.video-container{
+  padding: 10%;
+  padding-bottom: 0px;
 }

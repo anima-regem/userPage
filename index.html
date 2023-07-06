@@ -28,12 +28,11 @@
       <div class="popup__container">
         <div onclick="closePopup()" class="demo"></div>
         <div id="popup" class="popup">
-          <span class="close" onclick="closePopup()">&times;</span>
           <img id="popupImage" src="" alt="Popup Image" />
           <h2 id="popupTitle"></h2>
-          <div>
-            <span class="oldPrice"></span>
-            <span class="newPrice"></span>
+          <div class="price" id="price">
+            <span id="oldPrice" class="striked-price"></span>
+            <span id="newPrice"></span>
           </div>
           <p id="popupDescription"></p>
           <button id="popupButton" class="card-button">Go to Store</button>
@@ -53,7 +52,7 @@
           <div onclick="darkMode()" class="button-overlay" id="butnDrk">
             <a href="#">
               <div class="contents">
-                <img src="/iamges/dark_mode.svg" alt="" />
+                <img src="/images/dark_mode.svg" alt="" />
               </div>
             </a>
           </div>
@@ -129,9 +128,10 @@
 
       <div class="embedding section">
         <div class="video">
-          <iframe src="" frameborder="0" allowfullscreen></iframe>
+          <div class="video-container"></div>
         </div>
       </div>
+      
 
       <div class="products-section section" id="products-section"></div>
 
