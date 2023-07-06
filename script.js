@@ -517,7 +517,7 @@ services.forEach((service) => {
   cardButtonElem.textContent = "View More";
   cardContentElem.appendChild(cardButtonElem);
   cardButtonElem.addEventListener("click", (e) => {
-    openPopup(service.image, service.title, service.desc, service.link);
+    window.location.href = service.link;
   });
 
   servicesIcons.appendChild(cardElem);
