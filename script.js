@@ -102,51 +102,6 @@ const personData = {
   phone: "1234567890",
 };
 
-personData.websites = [`${window.location.href}`, ...personData.websites]
-
-const createVcard = () => {
-  const websites = personData.websites; // Assuming websites is an array of website URLs
-
-  const vcardData = [
-    "BEGIN:VCARD",
-    "VERSION:3.0",
-    `FN:${personData.name}`,
-    `EMAIL;TYPE=WORK:${personData.email}`,
-    `ORG:${personData.company}`,
-    `TITLE:${personData.position}`,
-    `ADR;TYPE=WORK:;;${personData.address}`,
-    `TEL;TYPE=CELL:${personData.phone}`,
-    ...websites.map((website) => `URL:${website}`), // Dynamically add website URLs
-    `X-SOCIALPROFILE;TYPE=whatsapp:${personData.whatsapp}`,
-    "END:VCARD",
-  ].join("\n");
-
-  const blob = new Blob([vcardData], { type: "text/vcard" });
-  const url = URL.createObjectURL(blob);
-
-  const downloadLink = document.createElement("a");
-  downloadLink.href = url;
-  downloadLink.download = `${personData.name}.vcf`;
-  downloadLink.click();
-
-  // Release the object URL after the download has started
-  URL.revokeObjectURL(url);
-};
-
-// setup dynamic data from backend
-
-const name = document.getElementById("name");
-const email = document.getElementById("email");
-const phone = document.getElementById("phone");
-const address = document.getElementById("address");
-const website = document.getElementById("website");
-const position = document.getElementById("position");
-const company = document.getElementById("company");
-const bio = document.getElementById("bio");
-
-// ----
-// Check if social media data is available
-
 const socialMedia = {
   status: true,
   socials: [
@@ -225,6 +180,89 @@ const socialMedia = {
   ],
 };
 
+const contactsData = [
+  {
+    type: "Phone Number",
+    value: "9265730149",
+  },
+  {
+    type: "Email",
+    value: ["example@gmail.com"],
+  },
+  {
+    type: "Address",
+    value: [
+      "C7 , Block ",
+      "PentaPark Appartment , Poothole , Thrissur",
+      "https://goo.gl/maps/BgeeqMgRWPd9edSP7",
+    ],
+  },
+  {
+    type: "Whatsapp",
+    value: "918129937097",
+  },
+  {
+    type: "Whatsapp Business",
+    value: "918129937097",
+  },
+];
+
+personData.websites = [`${window.location.href}`, ...personData.websites];
+
+const createVcard = () => {
+  const websites = personData.websites; // Assuming websites is an array of website URLs
+
+  const nameParts = personData.name.split(" ");
+  const firstName = nameParts[0];
+  const lastName = nameParts.slice(1).join(" ");
+
+  const vcardData = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    `N:${lastName};${firstName};;`,
+    `FN:${personData.name}`,
+    `EMAIL;TYPE=WORK:${personData.email}`,
+    `ORG:${personData.company}`,
+    `TITLE:${personData.position}`,
+    `ADR;TYPE=WORK:;;${personData.address}`,
+    `TEL;TYPE=CELL:${personData.phone}`,
+    ...websites.map((website) => `URL:${website}`),
+    ...socialMedia.socials.map(
+      (social) => `X-SOCIALPROFILE;TYPE=${social.type}:${social.value}`
+    ),
+    ...contactsData
+      .filter((contact) =>
+        ["Whatsapp", "Whatsapp Business"].includes(contact.type)
+      )
+      .map((contact) => `X-SOCIALPROFILE;TYPE=Whatsapp:${contact.value}`),
+    "END:VCARD",
+  ].join("\n");
+
+  const blob = new Blob([vcardData], { type: "text/vcard" });
+  const url = URL.createObjectURL(blob);
+
+  const downloadLink = document.createElement("a");
+  downloadLink.href = url;
+  downloadLink.download = `${personData.name}.vcf`;
+  downloadLink.click();
+
+  URL.revokeObjectURL(url);
+};
+
+// setup dynamic data from backend
+
+const name = document.getElementById("name");
+const email = document.getElementById("email");
+const phone = document.getElementById("phone");
+const address = document.getElementById("address");
+const website = document.getElementById("website");
+const position = document.getElementById("position");
+const company = document.getElementById("company");
+const bio = document.getElementById("bio");
+
+// ----
+// Check if social media data is available
+
 // Create an empty HTML string
 let socialMediaHTML = "";
 
@@ -289,33 +327,6 @@ socialMediaSection.innerHTML = socialMedia.status
 // ----
 // Check if social media data is available
 
-const contactsData = [
-  {
-    type: "Phone Number",
-    value: "9265730149",
-  },
-  {
-    type: "Email",
-    value: ["example@gmail.com"],
-  },
-  {
-    type: "Address",
-    value: [
-      "C7 , Block ",
-      "PentaPark Appartment , Poothole , Thrissur",
-      "680004",
-    ],
-  },
-  {
-    type: "Whatsapp",
-    value: "918129937097",
-  },
-  {
-    type: "Whatsapp Business",
-    value: "918129937097",
-  },
-];
-
 let contactVisible = true;
 
 if (!contactVisible || contactsData.length === 0) {
@@ -340,10 +351,9 @@ function createButton(type, value) {
     icon.classList.add("fa-solid", "fa-at");
     button.onclick = () => window.open(`mailto:${value}`);
   } else if (type === "Address") {
+    personData.websites = [`${value[2]}`, ...personData.websites];
     icon.classList.add("fa-solid", "fa-location-dot");
-    button.onclick = () => {
-      toggleModel("Address", value);
-    };
+    button.onclick = () => window.open(`${value[2]}`);
   } else if (type === "Whatsapp") {
     icon.classList.add("fa-brands", "fa-whatsapp");
     button.onclick = () => window.open(`https://wa.me/${value}`);
@@ -407,41 +417,116 @@ if (linksData.length > 0) {
 
 // define an array of services
 const services = [
-  { title: "Service 1", link: "https://example.com/service1" },
-  { title: "NFC", link: "https://example.com/service2" },
-  { title: "Service Business", link: "https://example.com/service1" },
-  { title: "NFC", link: "https://example.com/service1" },
-  { title: "Service 1", link: "https://example.com/service1" },
-  { title: "Service 1", link: "https://example.com/service1" },
-  { title: "Service 1", link: "https://example.com/service1" },
-  { title: "NFC", link: "https://example.com/service1" },
-  { title: "Service Business", link: "https://example.com/service1" },
+  {
+    image: "images/image.png",
+    title: "Smart Business Card",
+    oldPrice: "INR 2000",
+    newPrice: "Frame 101",
+    link: "https://google.com",
+    desc: "Lorem Ipsum",
+  },
+  {
+    image: "images/image.png",
+    title: "Smart Business Card",
+    oldPrice: "INR 2000",
+    newPrice: "Frame 101",
+    link: "https://google.com",
+    desc: "Lorem Ipsum",
+  },
+  {
+    image: "images/image.png",
+    title: "Smart Business Card Card",
+    oldPrice: "INR 2000",
+    newPrice: "Frame 101",
+    link: "https://google.com",
+    desc: "Lorem Ipsum",
+  },
+  {
+    image: "images/image.png",
+    title: "Smart Business ",
+    oldPrice: "INR 2000",
+    newPrice: "Frame 101",
+    link: "https://google.com",
+    desc: "Lorem Ipsum",
+  },
+  {
+    image: "images/image.png",
+    title: "Smart  Card",
+    oldPrice: "INR 2000",
+    newPrice: "Frame 101",
+    link: "https://google.com",
+    desc: "Lorem Ipsum",
+  },
+  {
+    image: "images/image.png",
+    title: " Business Card",
+    oldPrice: "INR 2000",
+    newPrice: "Frame 101",
+    link: "https://google.com",
+    desc: "Lorem Ipsum",
+  },
+  {
+    image: "images/image.png",
+    title: "Smart ",
+    oldPrice: "INR 2000",
+    newPrice: "Frame 101",
+    link: "https://google.com",
+    desc: "Lorem Ipsum",
+  },
 ];
 
-let serviceStatus = true;
+let serviceVisibility = true;
 
-if (!serviceStatus || services.length == 0) {
-  document.getElementsByClassName("services-section")[0].style.display = "none";
+if (!serviceVisibility || services.length == 0) {
+  document.getElementsByClassName("products-section")[0].style.display = "none";
 }
 
-// get the services-icons container
-const servicesIcons = document.getElementById("services-icons");
+// Get the products section container
+const servicesSection = document.getElementById("services-section");
 
-// loop through the services array and dynamically create the service elements
+// Create the products heading element
+const servicesHead = document.createElement("h3");
+servicesHead.classList.add("products-head", "head");
+servicesHead.textContent = "Services";
+
+// Create the products icons container element
+const servicesIcons = document.createElement("div");
+servicesIcons.classList.add("products-icons");
+
+// Loop through the products array and dynamically create the card elements
 services.forEach((service) => {
-  const serviceElem = document.createElement("div");
-  serviceElem.classList.add("service");
-  const titleElem = document.createElement("p");
-  titleElem.classList.add("s-title");
-  titleElem.textContent = service.title;
-  serviceElem.appendChild(titleElem);
-  servicesIcons.appendChild(serviceElem);
-  serviceElem.addEventListener("click", () => {
-    if (service.link) {
-      window.open(service.link, "_blank");
-    }
+  const cardElem = document.createElement("div");
+  cardElem.classList.add("card");
+
+  const cardImageElem = document.createElement("div");
+  cardImageElem.classList.add("card-image");
+  cardImageElem.style.backgroundImage = `url(${service.image})`;
+  cardElem.appendChild(cardImageElem);
+
+  const cardContentElem = document.createElement("div");
+  cardContentElem.classList.add("card-content");
+  cardElem.appendChild(cardContentElem);
+
+  const cardTitleElem = document.createElement("h1");
+  cardTitleElem.classList.add("card-title");
+  cardTitleElem.textContent = service.title;
+  cardContentElem.appendChild(cardTitleElem);
+
+  const cardButtonElem = document.createElement("button");
+  cardButtonElem.classList.add("card-button");
+  cardButtonElem.textContent = "View More";
+  cardContentElem.appendChild(cardButtonElem);
+  cardButtonElem.addEventListener("click", (e) => {
+    openPopup(service.image, service.title, service.desc, service.link);
   });
+
+  servicesIcons.appendChild(cardElem);
 });
+
+// Add the elements to the products section container
+servicesSection.appendChild(servicesHead);
+servicesSection.appendChild(document.createElement("hr"));
+servicesSection.appendChild(servicesIcons);
 
 // get the video container and iframe element
 const videoContainer = document.querySelector(".embedding .video");
@@ -463,49 +548,49 @@ videoFrame.setAttribute("src", youtubeUrl);
 // Define an array of products
 const products = [
   {
-    image: "path/to/image1.jpg",
+    image: "images/image.png",
     title: "Smart Business Card",
     oldPrice: "INR 2000",
     newPrice: "Frame 101",
     link: "https://google.com",
   },
   {
-    image: "path/to/image2.jpg",
+    image: "images/image.png",
     title: "Smart Business Card",
     oldPrice: "INR 2000",
     newPrice: "Frame 101",
     link: "https://google.com",
   },
   {
-    image: "path/to/image2.jpg",
+    image: "images/image.png",
     title: "Smart Business Card Card",
     oldPrice: "INR 2000",
     newPrice: "Frame 101",
     link: "https://google.com",
   },
   {
-    image: "path/to/image2.jpg",
+    image: "images/image.png",
     title: "Smart Business ",
     oldPrice: "INR 2000",
     newPrice: "Frame 101",
     link: "https://google.com",
   },
   {
-    image: "path/to/image2.jpg",
+    image: "images/image.png",
     title: "Smart  Card",
     oldPrice: "INR 2000",
     newPrice: "Frame 101",
     link: "https://google.com",
   },
   {
-    image: "path/to/image2.jpg",
+    image: "images/image.png",
     title: " Business Card",
     oldPrice: "INR 2000",
     newPrice: "Frame 101",
     link: "https://google.com",
   },
   {
-    image: "path/to/image2.jpg",
+    image: "images/image.png",
     title: "Smart ",
     oldPrice: "INR 2000",
     newPrice: "Frame 101",
@@ -550,19 +635,12 @@ products.forEach((product) => {
   cardTitleElem.textContent = product.title;
   cardContentElem.appendChild(cardTitleElem);
 
-  const cardSubtitleElem = document.createElement("p");
-  cardSubtitleElem.classList.add("card-subtitle", "striked-price");
-  cardSubtitleElem.textContent = product.oldPrice;
-  cardContentElem.appendChild(cardSubtitleElem);
-
   const cardButtonElem = document.createElement("button");
   cardButtonElem.classList.add("card-button");
-  cardButtonElem.textContent = product.newPrice;
+  cardButtonElem.textContent = "View More";
   cardContentElem.appendChild(cardButtonElem);
   cardButtonElem.addEventListener("click", (e) => {
-    if (product.link) {
-      window.open(product.link, "_blank");
-    }
+    openPopup();
   });
 
   productsIcons.appendChild(cardElem);
@@ -842,3 +920,32 @@ function handleScroll() {
 
 // Attach the scroll event listener to the window
 window.addEventListener("scroll", handleScroll);
+
+// Products Popup
+
+function openPopup(image, title, description, link) {
+  var popup = document.getElementById("popup");
+  popup.style.display = "block";
+  popup.classList.add("show");
+
+  // Set the content of the popup dynamically
+  var popupImage = document.getElementById("popupImage");
+  popupImage.src = image;
+
+  var popupTitle = document.getElementById("popupTitle");
+  popupTitle.innerHTML = title;
+
+  var popupDescription = document.getElementById("popupDescription");
+  popupDescription.innerHTML = description;
+
+  var popupButton = document.getElementById("popupButton");
+  popupButton.onclick = function () {
+    window.location.href = link; // Replace with your store URL
+  };
+}
+
+function closePopup() {
+  var popup = document.getElementById("popup__container");
+  popup.style.display = "none";
+  popup.classList.remove("show");
+}
