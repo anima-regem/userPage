@@ -955,6 +955,9 @@ function openPopup(image, title, description, link, price = null) {
   popupTitle.innerHTML = title;
 
   if (price) {
+    var prices = document.getElementById("price");
+    prices.style.display="block";
+
     var oldPrice = document.getElementById("oldPrice");
     oldPrice.innerHTML = price.oldPrice;
     var newPrice = document.getElementById("newPrice");
