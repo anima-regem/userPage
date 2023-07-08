@@ -1,3 +1,125 @@
+/*
+
+
+Code Destructuring - Services
+
+service : Object 
+  status : Boolean
+  services: Array
+    0 : Object
+      image: Object
+        key: String
+        fileName : String
+        contentType : String
+        public: String
+        link: String
+      label: String
+      value: String
+      _id: Object
+
+*/
+const servicesData = {
+  status: true,
+  services: [
+    {
+      _id: {
+        $oid: "643d798412ca41ecc1784a3a",
+      },
+      label: "Service 1",
+      value: "service1.com",
+      image: {
+        key: "products/643d798412ca41ecc1784a3a/643d798412ca41ecc1784a3a.png",
+        fileName: "643d798412ca41ecc1784a3a.png",
+        contentType: "image/png",
+        public:
+          "https://cdn.filestackcontent.com/resize=width:100,height:100,fit:crop,align:top/643d798412ca41ecc1784a3a",
+        link: "https://cdn.filestackcontent.com/resize=width:100,height:100,fit:crop,align:top/643d798412ca41ecc1784a3a",
+      },
+    },
+  ],
+};
+
+const serviceVisibility = servicesData.status;
+const services = servicesData.services;
+
+/*
+
+Code Destructuring - Products
+
+product : Object
+  status : Boolean
+  products : Array
+    0 : Object
+      image: Object
+        key: String
+        fileName : String
+        contentType : String
+        public: String
+        link: String
+      name: String
+      link: String
+      description: String
+      price: Number
+      offerPrice: Number
+      _id: Object
+
+*/
+
+const productsData = {
+  status: true,
+  products: [
+    {
+      _id: {
+        $oid: "643d798412ca41ecc1784a3a",
+      },
+      name: "Product 1",
+      link: "product1.com",
+      description: "Product 1 Description",
+      price: 100,
+      offerPrice: 50,
+      image: {
+        key: "products/643d798412ca41ecc1784a3a/643d798412ca41ecc1784a3a.png",
+        fileName: "643d798412ca41ecc1784a3a.png",
+        contentType: "image/png",
+        public:
+          "https://cdn.filestackcontent.com/resize=width:100,height:100,fit:crop,align:top/643d798412ca41ecc1784a3a",
+        link: "https://cdn.filestackcontent.com/resize=width:100,height:100,fit:crop,align:top/643d798412ca41ecc1784a3a",
+      },
+    },
+  ],
+};
+
+const productVisibility = productsData.status;
+const products = productsData.products;
+
+/*
+
+  Code Destructuring - Youtube Videos
+
+  video : Object
+    status : Boolean
+    videos : Array
+      0 : Object
+        link: String
+        _id: Object
+
+*/
+
+const videosData = {
+  status: true,
+  videos: [
+    {
+      _id: {
+        $oid: "643d798412ca41ecc1784a3a",
+      },
+      link: "https://www.youtube.com/watch?v=643d798412ca41ecc1784a3a",
+    },
+  ],
+};
+
+const videoVisibility = videosData.status;
+const videos = videosData.videos;
+
 const altBtn = document.getElementById("btn_hi");
 altBtn.style.display = "none";
 
@@ -415,68 +537,6 @@ if (linksData.length > 0) {
   websitesContainer.innerHTML = linkCardsHtml;
 }
 
-// define an array of services
-const services = [
-  {
-    image: "images/image.png",
-    title: "Smart Business Card",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    image: "images/image.png",
-    title: "Smart Business Card",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    image: "images/image.png",
-    title: "Smart Business Card Card",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    image: "images/image.png",
-    title: "Smart Business ",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    image: "images/image.png",
-    title: "Smart  Card",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    image: "images/image.png",
-    title: " Business Card",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    image: "images/image.png",
-    title: "Smart ",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-];
-
-let serviceVisibility = true;
-
 if (!serviceVisibility || services.length == 0) {
   document.getElementsByClassName("products-section")[0].style.display = "none";
 }
@@ -500,7 +560,7 @@ services.forEach((service) => {
 
   const cardImageElem = document.createElement("div");
   cardImageElem.classList.add("card-image");
-  cardImageElem.style.backgroundImage = `url(${service.image})`;
+  cardImageElem.style.backgroundImage = `url(${service.image.link}})`;
   cardElem.appendChild(cardImageElem);
 
   const cardContentElem = document.createElement("div");
@@ -509,7 +569,7 @@ services.forEach((service) => {
 
   const cardTitleElem = document.createElement("h1");
   cardTitleElem.classList.add("card-title");
-  cardTitleElem.textContent = service.title;
+  cardTitleElem.textContent = service.label;
   cardContentElem.appendChild(cardTitleElem);
 
   const cardButtonElem = document.createElement("button");
@@ -517,7 +577,7 @@ services.forEach((service) => {
   cardButtonElem.textContent = "View More";
   cardContentElem.appendChild(cardButtonElem);
   cardButtonElem.addEventListener("click", (e) => {
-    window.location.href = service.link;
+    window.location.href = service.value;
   });
 
   servicesIcons.appendChild(cardElem);
@@ -529,92 +589,31 @@ servicesSection.appendChild(document.createElement("hr"));
 servicesSection.appendChild(servicesIcons);
 
 // get the video container
-const videoContainer = document.querySelector(".embedding .video .video-container");
+const videoContainer = document.querySelector(
+  ".embedding .video .video-container"
+);
 
-const youtubeUrls = [
-  "https://www.youtube.com/watch?v=tmGDx9hVWwo",
-  "https://www.youtube.com/watch?v=xaciGzadGTo",
-  "https://www.youtube.com/watch?v=5oH9Nr3bKfw"
-];
+const youtubeUrls = videos.map((video) => video.link);
 
-// loop through the youtubeUrls list
-youtubeUrls.forEach(ytLink => {
-  const ytEmbed = `https://www.youtube.com/embed/${ytLink.split("v=")[1]}`;
-  
-  // create iframe for each video
-  const videoFrame = document.createElement("iframe");
-  videoFrame.src = ytEmbed;
-  videoFrame.frameborder = "0";
-  videoFrame.allowfullscreen = true;
+if (!videoVisibility || youtubeUrls.length == 0) {
+  document.getElementsByClassName("embedding")[0].style.display = "none";
+} else {
+  // loop through the youtubeUrls list
+  youtubeUrls.forEach((ytLink) => {
+    const ytEmbed = `https://www.youtube.com/embed/${ytLink.split("v=")[1]}`;
 
-  // append the iframe to the video container
-  videoContainer.appendChild(videoFrame);
-});
+    // create iframe for each video
+    const videoFrame = document.createElement("iframe");
+    videoFrame.src = ytEmbed;
+    videoFrame.frameborder = "0";
+    videoFrame.allowfullscreen = true;
 
+    // append the iframe to the video container
+    videoContainer.appendChild(videoFrame);
+  });
+}
 
 // ---------
-
-// Define an array of products
-const products = [
-  {
-    image: "images/image.png",
-    title: "Smart Business Card",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    image: "images/image.png",
-    title: "Smart Business Card",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    image: "images/image.png",
-    title: "Smart Business Card Card",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    image: "images/image.png",
-    title: "Smart Business ",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    image: "images/image.png",
-    title: "Smart  Card",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    image: "images/image.png",
-    title: " Business Card",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    image: "images/image.png",
-    title: "Smart ",
-    oldPrice: "INR 2000",
-    newPrice: "Frame 101",
-    link: "https://google.com",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-];
-
-let productVisibility = true;
 
 if (!productVisibility || products.length == 0) {
   document.getElementsByClassName("products-section")[0].style.display = "none";
@@ -639,7 +638,7 @@ products.forEach((product) => {
 
   const cardImageElem = document.createElement("div");
   cardImageElem.classList.add("card-image");
-  cardImageElem.style.backgroundImage = `url(${product.image})`;
+  cardImageElem.style.backgroundImage = `url(${product.image.link})`;
   cardElem.appendChild(cardImageElem);
 
   const cardContentElem = document.createElement("div");
@@ -648,7 +647,7 @@ products.forEach((product) => {
 
   const cardTitleElem = document.createElement("h1");
   cardTitleElem.classList.add("card-title");
-  cardTitleElem.textContent = product.title;
+  cardTitleElem.textContent = product.name;
   cardContentElem.appendChild(cardTitleElem);
 
   const cardButtonElem = document.createElement("button");
@@ -656,10 +655,16 @@ products.forEach((product) => {
   cardButtonElem.textContent = "View More";
   cardContentElem.appendChild(cardButtonElem);
   cardButtonElem.addEventListener("click", (e) => {
-    openPopup(product.image, product.title, product.desc, product.link, {
-      oldPrice: product.oldPrice,
-      newPrice: product.newPrice,
-    });
+    openPopup(
+      product.image.link,
+      product.name,
+      product.description,
+      product.link,
+      {
+        oldPrice: product.price,
+        newPrice: product.offerPrice,
+      }
+    );
   });
 
   productsIcons.appendChild(cardElem);
@@ -956,15 +961,15 @@ function openPopup(image, title, description, link, price = null) {
 
   if (price) {
     var prices = document.getElementById("price");
-    prices.style.display="block";
+    prices.style.display = "block";
 
     var oldPrice = document.getElementById("oldPrice");
-    oldPrice.innerHTML = price.oldPrice;
+    oldPrice.innerHTML = "INR " + price.oldPrice;
     var newPrice = document.getElementById("newPrice");
-    newPrice.innerHTML = price.newPrice;
-  } else{
+    newPrice.innerHTML = "INR " + price.newPrice;
+  } else {
     var prices = document.getElementById("price");
-    prices.style.display="none";
+    prices.style.display = "none";
   }
 
   var popupDescription = document.getElementById("popupDescription");
