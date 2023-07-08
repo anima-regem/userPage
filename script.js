@@ -36,6 +36,36 @@ const servicesData = {
         link: "https://cdn.filestackcontent.com/resize=width:100,height:100,fit:crop,align:top/643d798412ca41ecc1784a3a",
       },
     },
+    {
+      _id: {
+        $oid: "643d798412ca41ecc1784a3a",
+      },
+      label: "Service 2",
+      value: "service2.com",
+      image: {
+        key: "products/643d798412ca41ecc1784a3a/643d798412ca41ecc1784a3a.png",
+        fileName: "643d798412ca41ecc1784a3a.png",
+        contentType: "image/png",
+        public:
+          "https://cdn.filestackcontent.com/resize=width:100,height:100,fit:crop,align:top/643d798412ca41ecc1784a3a",
+        link: "https://cdn.filestackcontent.com/resize=width:100,height:100,fit:crop,align:top/643d798412ca41ecc1784a3a",
+      },
+    },
+    {
+      _id: {
+        $oid: "643d798412ca41ecc1784a3a",
+      },
+      label: "Service 3",
+      value: "service3.com",
+      image: {
+        key: "products/643d798412ca41ecc1784a3a/643d798412ca41ecc1784a3a.png",
+        fileName: "643d798412ca41ecc1784a3a.png",
+        contentType: "image/png",
+        public:
+          "https://cdn.filestackcontent.com/resize=width:100,height:100,fit:crop,align:top/643d798412ca41ecc1784a3a",
+        link: "https://cdn.filestackcontent.com/resize=width:100,height:100,fit:crop,align:top/643d798412ca41ecc1784a3a",
+      },
+    },
   ],
 };
 
@@ -75,6 +105,24 @@ const productsData = {
       name: "Product 1",
       link: "product1.com",
       description: "Product 1 Description",
+      price: 100,
+      offerPrice: 50,
+      image: {
+        key: "products/643d798412ca41ecc1784a3a/643d798412ca41ecc1784a3a.png",
+        fileName: "643d798412ca41ecc1784a3a.png",
+        contentType: "image/png",
+        public:
+          "https://cdn.filestackcontent.com/resize=width:100,height:100,fit:crop,align:top/643d798412ca41ecc1784a3a",
+        link: "https://cdn.filestackcontent.com/resize=width:100,height:100,fit:crop,align:top/643d798412ca41ecc1784a3a",
+      },
+    },
+    {
+      _id: {
+        $oid: "643d798412ca41ecc1784a3a",
+      },
+      name: "Product 2",
+      link: "product2.com",
+      description: "Product 2 Description",
       price: 100,
       offerPrice: 50,
       image: {
